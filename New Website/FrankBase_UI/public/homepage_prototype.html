@@ -3,413 +3,466 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FrankBase UI — Ultimate Homepage Design Prototype</title>
+<title>FrankBase UI — Master Button Library (60+ Types)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg-dark: #07080c;
-    --card-bg: rgba(18, 20, 28, 0.75);
-    --border-color: rgba(255, 255, 255, 0.08);
-    --primary: #6366f1;
-    --primary-glow: rgba(99, 102, 241, 0.35);
-    --accent-cyan: #00d4ff;
-    --accent-pink: #ff0055;
-    --accent-amber: #f59e0b;
-    --accent-emerald: #10b981;
-    --text-white: #ffffff;
-    --text-muted: #94a3b8;
-  }
+/* ============================================
+   DESIGN TOKENS
+============================================ */
+:root {
+  --bg: #07080c;
+  --card: rgba(14,17,26,0.82);
+  --border: rgba(255,255,255,0.08);
+  --primary: #6366f1;
+  --primary-glow: rgba(99,102,241,0.35);
+  --cyan: #00d4ff;
+  --pink: #ff0055;
+  --amber: #f59e0b;
+  --emerald: #10b981;
+  --muted: #94a3b8;
+  --white: #ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Plus Jakarta Sans',sans-serif}
+body{background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+/* ============================================
+   AMBIENT BACKGROUND
+============================================ */
+.orb{position:fixed;pointer-events:none;border-radius:50%;filter:blur(100px);z-index:0}
+.orb-1{width:700px;height:700px;top:-200px;left:10%;background:radial-gradient(circle,rgba(99,102,241,0.18) 0%,transparent 70%)}
+.orb-2{width:600px;height:600px;top:50%;right:-100px;background:radial-gradient(circle,rgba(255,0,85,0.14) 0%,transparent 70%)}
 
-  body {
-    background-color: var(--bg-dark);
-    color: var(--text-white);
-    overflow-x: hidden;
-    line-height: 1.6;
-  }
+/* ============================================
+   HEADER
+============================================ */
+header{position:sticky;top:0;z-index:100;height:68px;padding:0 48px;background:rgba(10,12,20,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#ff0055);display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 4px 16px rgba(99,102,241,0.4)}
+.logo-name{font-size:19px;font-weight:900;color:#fff;letter-spacing:-0.02em;display:flex;align-items:center;gap:6px}
+.logo-badge{background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;font-size:11px;font-weight:800;padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:0.05em}
+nav{display:flex;gap:24px;font-size:13px;font-weight:600}
+nav a{color:var(--muted);text-decoration:none;transition:color 0.2s}
+nav a:hover,nav a.active{color:#fff}
+.hdr-right{display:flex;align-items:center;gap:14px}
+.count-pill{background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);color:#a5b4fc;padding:6px 16px;border-radius:99px;font-size:12px;font-weight:700}
+.btn-open{background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;padding:10px 20px;border-radius:10px;font-size:13px;font-weight:700;text-decoration:none;box-shadow:0 4px 14px var(--primary-glow);transition:transform 0.2s}
+.btn-open:hover{transform:translateY(-2px)}
 
-  /* Ambient Glow Orbs */
-  .glow-orb-1 {
-    position: absolute; top: -100px; left: 20%; width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, transparent 70%);
-    filter: blur(90px); pointer-events: none; z-index: 0;
-  }
-  .glow-orb-2 {
-    position: absolute; top: 400px; right: 10%; width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(255, 0, 85, 0.16) 0%, transparent 70%);
-    filter: blur(100px); pointer-events: none; z-index: 0;
-  }
+/* ============================================
+   HERO
+============================================ */
+.hero{position:relative;z-index:1;padding:72px 24px 40px;text-align:center;max-width:1000px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);color:#a5b4fc;padding:6px 18px;border-radius:99px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:22px}
+.hero h1{font-size:54px;font-weight:900;letter-spacing:-0.03em;line-height:1.12;margin-bottom:20px}
+.grad{background:linear-gradient(90deg,#6366f1,#00d4ff,#ff0055);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:17px;color:var(--muted);max-width:680px;margin:0 auto 36px;font-weight:500}
+.hero-btns{display:flex;justify-content:center;gap:14px;margin-bottom:48px;flex-wrap:wrap}
+.h-primary{background:linear-gradient(90deg,#6366f1,#ff0055);color:#fff;padding:15px 34px;border-radius:13px;font-size:15px;font-weight:800;text-decoration:none;box-shadow:0 10px 30px rgba(99,102,241,0.4);transition:all 0.25s}
+.h-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 14px 40px rgba(99,102,241,0.6)}
+.h-secondary{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:#fff;padding:15px 34px;border-radius:13px;font-size:15px;font-weight:700;text-decoration:none;transition:background 0.2s}
+.h-secondary:hover{background:rgba(255,255,255,0.1)}
 
-  /* 1. Header & Unified Brand Logo */
-  header {
-    position: sticky; top: 0; z-index: 100;
-    height: 72px; padding: 0 48px;
-    background: rgba(13, 15, 23, 0.88);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border-color);
-    display: flex; align-items: center; justify-content: space-between;
-  }
+/* Stats */
+.stats{display:flex;justify-content:center;gap:40px;padding:22px 36px;background:rgba(14,17,26,0.7);border:1px solid var(--border);border-radius:18px;max-width:860px;margin:0 auto 72px;backdrop-filter:blur(12px);flex-wrap:wrap}
+.stat h3{font-size:30px;font-weight:900}
+.stat p{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.04em}
 
-  .brand-logo {
-    display: flex; align-items: center; gap: 10px;
-    text-decoration: none; cursor: pointer;
-  }
-  .brand-icon {
-    width: 38px; height: 38px; border-radius: 10px;
-    background: linear-gradient(135deg, #6366f1, #ff0055);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
-  }
-  .brand-name {
-    font-size: 20px; font-weight: 900; color: #ffffff;
-    display: flex; align-items: center; gap: 6px; letter-spacing: -0.02em;
-  }
-  .brand-badge {
-    background: linear-gradient(90deg, #6366f1, #8b5cf6);
-    color: #ffffff; font-size: 11px; font-weight: 800;
-    padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.05em;
-  }
+/* ============================================
+   CATEGORY SECTION LABEL
+============================================ */
+.cat-label{max-width:1360px;margin:0 auto 18px;padding:0 24px;display:flex;align-items:center;gap:16px}
+.cat-label h2{font-size:22px;font-weight:900;letter-spacing:-0.02em}
+.cat-label span{background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.25);color:#a5b4fc;padding:4px 12px;border-radius:6px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em}
+.cat-divider{height:1px;background:linear-gradient(90deg,rgba(99,102,241,0.4),transparent);flex:1}
 
-  nav { display: flex; gap: 28px; font-size: 14px; font-weight: 600; }
-  nav a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
-  nav a:hover, nav a.active { color: #ffffff; }
+/* ============================================
+   GRID
+============================================ */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1360px;margin:0 auto 64px;padding:0 24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px 20px;text-align:center;transition:all 0.3s;display:flex;flex-direction:column;align-items:center;gap:14px;min-height:220px;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;inset:0;border-radius:18px;background:linear-gradient(135deg,rgba(99,102,241,0.04) 0%,transparent 60%);pointer-events:none}
+.card:hover{border-color:rgba(99,102,241,0.45);transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,0.5)}
+.card-num{font-size:10px;font-weight:800;color:var(--cyan);text-transform:uppercase;letter-spacing:0.1em}
+.card-wrap{flex:1;display:flex;align-items:center;justify-content:center}
+.card-desc{font-size:11.5px;color:var(--muted);line-height:1.5}
 
-  .header-actions { display: flex; align-items: center; gap: 16px; }
-  .search-pill {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-color);
-    padding: 8px 16px; border-radius: 99px;
-    font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; cursor: pointer;
-  }
-  .btn-primary-sm {
-    background: linear-gradient(90deg, var(--primary), #8b5cf6);
-    color: #fff; padding: 10px 20px; border-radius: 10px;
-    font-size: 13px; font-weight: 700; text-decoration: none;
-    box-shadow: 0 4px 14px var(--primary-glow); transition: transform 0.2s;
-  }
-  .btn-primary-sm:hover { transform: translateY(-2px); }
+/* ============================================
+   SECTION TITLE
+============================================ */
+.section-title{text-align:center;margin-bottom:40px}
+.section-title h2{font-size:34px;font-weight:900;letter-spacing:-0.02em}
+.section-title p{color:var(--muted);font-size:14px;margin-top:8px}
 
-  /* 2. Hero Section */
-  .hero {
-    position: relative; z-index: 1;
-    padding: 80px 24px 48px; text-align: center; max-width: 1050px; margin: 0 auto;
-  }
-  .badge-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3);
-    color: #a5b4fc; padding: 6px 18px; border-radius: 99px;
-    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px;
-  }
-  .hero h1 {
-    font-size: 58px; font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 24px;
-  }
-  .gradient-text {
-    background: linear-gradient(90deg, #6366f1, #00d4ff, #ff0055);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
-  .hero p {
-    font-size: 18px; color: var(--text-muted); max-width: 720px; margin: 0 auto 40px; font-weight: 500;
-  }
-  .hero-buttons { display: flex; justify-content: center; gap: 16px; margin-bottom: 54px; }
-  .btn-hero-primary {
-    background: linear-gradient(90deg, var(--primary), var(--accent-pink));
-    color: #fff; padding: 16px 36px; border-radius: 14px;
-    font-size: 16px; font-weight: 800; text-decoration: none;
-    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4); transition: all 0.25s;
-  }
-  .btn-hero-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 40px rgba(99, 102, 241, 0.6); }
-  .btn-hero-secondary {
-    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color);
-    color: #fff; padding: 16px 36px; border-radius: 14px;
-    font-size: 16px; font-weight: 700; text-decoration: none; transition: background 0.2s;
-  }
+/* ============================================
+   ========= ALL BUTTON STYLES =========
+============================================ */
 
-  /* Stats Ribbon */
-  .stats-ribbon {
-    display: flex; justify-content: center; gap: 48px;
-    padding: 24px 36px; background: rgba(18, 20, 28, 0.6);
-    border: 1px solid var(--border-color); border-radius: 20px;
-    max-width: 900px; margin: 0 auto 80px; backdrop-filter: blur(12px);
-  }
-  .stat-item h3 { font-size: 32px; font-weight: 900; color: #fff; }
-  .stat-item p { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+/* --- CATEGORY 1: STRUCTURAL ARCHETYPES (My original 8) --- */
+.b-glass{padding:12px 24px;border-radius:12px;border:1px solid rgba(255,255,255,0.22);background:rgba(255,255,255,0.08);backdrop-filter:blur(14px);color:#fff;font-weight:700;cursor:pointer;transition:0.25s}
+.b-glass:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.4)}
+.b-neon-pulse{padding:12px 24px;border-radius:99px;border:none;background:linear-gradient(90deg,#ff0055,#6366f1);color:#fff;font-weight:800;cursor:pointer;box-shadow:0 0 20px rgba(255,0,85,0.55);animation:neonPulse 2.2s ease-in-out infinite}
+@keyframes neonPulse{50%{box-shadow:0 0 38px rgba(255,0,85,0.9),0 0 60px rgba(99,102,241,0.4)}}
+.b-conic{padding:12px 24px;border-radius:12px;border:2px solid transparent;background:linear-gradient(#0f172a,#0f172a) padding-box,conic-gradient(from 0deg,#6366f1,#00d4ff,#ff0055,#6366f1) border-box;color:#00d4ff;font-weight:800;cursor:pointer;animation:conicSpin 3s linear infinite}
+@keyframes conicSpin{to{filter:hue-rotate(360deg)}}
+.b-3d{padding:12px 24px;border-radius:12px;border:none;background:#6366f1;color:#fff;font-weight:800;cursor:pointer;box-shadow:0 7px 0 #3730a3;transition:all 0.1s}
+.b-3d:active{transform:translateY(5px);box-shadow:0 2px 0 #3730a3}
+.b-neuro{padding:12px 24px;border-radius:14px;border:none;background:#1e293b;color:#a5b4fc;font-weight:800;cursor:pointer;box-shadow:-5px -5px 12px rgba(255,255,255,0.04),5px 5px 14px rgba(0,0,0,0.55)}
+.b-neuro:active{box-shadow:inset 3px 3px 8px rgba(0,0,0,0.6),inset -3px -3px 6px rgba(255,255,255,0.03)}
+.b-grad-move{padding:12px 24px;border-radius:12px;border:none;background:linear-gradient(90deg,#10b981,#00d4ff,#6366f1,#ff0055);background-size:400% 100%;color:#fff;font-weight:800;cursor:pointer;animation:gradFlow 4s linear infinite}
+@keyframes gradFlow{to{background-position:400% 0}}
+.b-polygon{padding:12px 24px;border:1.5px solid #f59e0b;background:rgba(245,158,11,0.08);color:#f59e0b;font-weight:800;cursor:pointer;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);transition:0.2s}
+.b-polygon:hover{background:rgba(245,158,11,0.2)}
+.b-synthwave{padding:12px 24px;border-radius:12px;border:1px solid #ff0055;background:linear-gradient(180deg,#0f0a1a,#1a0a1a);color:#ff0055;font-weight:800;cursor:pointer;box-shadow:inset 0 0 14px rgba(255,0,85,0.25),0 0 20px rgba(255,0,85,0.15);text-shadow:0 0 8px rgba(255,0,85,0.8)}
 
-  /* 3. Section Titles */
-  .section-title { text-align: center; margin-bottom: 48px; }
-  .section-title h2 { font-size: 36px; font-weight: 900; letter-spacing: -0.02em; }
-  .section-title p { color: var(--text-muted); font-size: 15px; margin-top: 8px; }
+/* --- CATEGORY 2: SHAPE VARIANTS (from ChatGPT) --- */
+.b-pill{padding:12px 28px;border:0;border-radius:999px;background:linear-gradient(90deg,#6366f1,#8b5cf6);color:#fff;font-weight:800;cursor:pointer;transition:0.2s}
+.b-pill:hover{transform:scale(1.04);box-shadow:0 6px 20px rgba(99,102,241,0.4)}
+.b-outline{padding:12px 24px;border:1.5px solid #6366f1;border-radius:12px;background:transparent;color:#a5b4fc;font-weight:800;cursor:pointer;transition:0.2s}
+.b-outline:hover{background:rgba(99,102,241,0.12)}
+.b-ghost{padding:12px 24px;border:0;border-radius:10px;background:rgba(255,255,255,0.06);color:#dce3ef;font-weight:700;cursor:pointer;transition:0.2s}
+.b-ghost:hover{background:rgba(255,255,255,0.12)}
+.b-text-only{padding:12px 18px;border:0;background:transparent;color:#8ea0ff;font-weight:800;cursor:pointer;text-decoration:underline;text-underline-offset:3px;transition:0.2s}
+.b-text-only:hover{color:#c4b5fd}
+.b-icon{width:48px;height:48px;border-radius:12px;border:1px solid rgba(255,255,255,0.13);background:#171b25;color:#fff;font-weight:900;font-size:20px;cursor:pointer;transition:0.2s}
+.b-icon:hover{border-color:#6366f1;box-shadow:0 0 12px rgba(99,102,241,0.4)}
+.b-circle{width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);background:#171b25;color:#fff;font-weight:900;font-size:18px;cursor:pointer;transition:0.2s}
+.b-circle:hover{border-color:#00d4ff;box-shadow:0 0 14px rgba(0,212,255,0.35)}
+.b-square{width:50px;height:50px;border-radius:7px;border:1px solid rgba(255,255,255,0.13);background:#171b25;color:#fff;font-weight:900;font-size:20px;cursor:pointer;transition:0.2s}
+.b-square:hover{background:#2d3748}
+.b-icon-text{padding:12px 20px;border:1px solid rgba(255,255,255,0.12);border-radius:11px;background:#171b25;color:#fff;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;transition:0.2s}
+.b-icon-text:hover{border-color:#6366f1}
 
-  /* 4. Expanded 8 Archetype Cards Grid */
-  .grid-container {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px; max-width: 1240px; margin: 0 auto 96px; padding: 0 24px;
-  }
-  .card {
-    background: var(--card-bg); border: 1px solid var(--border-color);
-    border-radius: 20px; padding: 28px 24px; text-align: center;
-    position: relative; overflow: hidden; transition: all 0.3s;
-    display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 250px;
-  }
-  .card:hover {
-    border-color: rgba(99, 102, 241, 0.5);
-    transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-  }
-  .card-tag { font-size: 11px; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+/* --- CATEGORY 3: STATE BUTTONS --- */
+.b-toggle{padding:11px 18px;border:1px solid rgba(16,185,129,0.4);border-radius:999px;background:rgba(16,185,129,0.1);color:#34d399;font-weight:800;cursor:pointer;transition:0.2s}
+.b-toggle:hover{background:rgba(16,185,129,0.2)}
+.b-loading{padding:11px 18px;border-radius:10px;background:#171b25;color:#94a3b8;border:1px solid #334155;font-weight:800;cursor:not-allowed;display:flex;align-items:center;gap:8px}
+.b-loading::before{content:'';width:14px;height:14px;border:2px solid #475569;border-top-color:#94a3b8;border-radius:50%;animation:spin 0.8s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.b-success{padding:11px 18px;border-radius:10px;background:rgba(16,185,129,0.12);color:#34d399;border:1px solid rgba(16,185,129,0.4);font-weight:800;cursor:pointer;transition:0.2s}
+.b-success:hover{background:rgba(16,185,129,0.22)}
+.b-error{padding:11px 18px;border-radius:10px;background:rgba(255,0,85,0.1);color:#ff4f87;border:1px solid rgba(255,0,85,0.45);font-weight:800;cursor:pointer;transition:0.2s}
+.b-error:hover{background:rgba(255,0,85,0.2)}
+.b-warning{padding:11px 18px;border-radius:10px;background:rgba(245,158,11,0.1);color:#fbbf24;border:1px solid rgba(245,158,11,0.45);font-weight:800;cursor:pointer;transition:0.2s}
+.b-warning:hover{background:rgba(245,158,11,0.2)}
+.b-disabled{padding:11px 18px;border-radius:10px;background:#1a1f2e;color:#475569;border:1px solid #1e2537;font-weight:800;cursor:not-allowed;opacity:0.6}
+.b-active{padding:11px 18px;border-radius:10px;background:rgba(99,102,241,0.22);color:#a5b4fc;border:1px solid rgba(99,102,241,0.5);font-weight:800;cursor:pointer;box-shadow:inset 0 0 12px rgba(99,102,241,0.1)}
 
-  /* Sample Interactive Buttons */
-  .demo-btn-1 {
-    padding: 12px 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);
-    background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px);
-    color: #fff; font-weight: 700; cursor: pointer; transition: 0.25s;
-  }
-  .demo-btn-2 {
-    padding: 12px 24px; border-radius: 99px; border: none;
-    background: linear-gradient(90deg, #ff0055, #6366f1);
-    color: #fff; font-weight: 800; cursor: pointer;
-    box-shadow: 0 0 22px rgba(255, 0, 85, 0.6); animation: pulseGlow 2s infinite;
-  }
-  @keyframes pulseGlow { 50% { box-shadow: 0 0 35px rgba(255, 0, 85, 0.9); } }
+/* --- CATEGORY 4: ACTION / UTILITY BUTTONS --- */
+.b-download{padding:12px 20px;border-radius:10px;border:1px solid rgba(16,185,129,0.35);background:rgba(16,185,129,0.1);color:#34d399;font-weight:800;cursor:pointer;transition:0.2s}
+.b-download:hover{background:rgba(16,185,129,0.2);transform:translateY(-2px)}
+.b-upload{padding:12px 20px;border-radius:10px;border:1px solid rgba(0,212,255,0.35);background:rgba(0,212,255,0.08);color:#22d3ee;font-weight:800;cursor:pointer;transition:0.2s}
+.b-upload:hover{background:rgba(0,212,255,0.15)}
+.b-copy{padding:11px 18px;border:1px solid rgba(255,255,255,0.12);border-radius:9px;background:#171b25;color:#dbe3ef;font-weight:800;cursor:pointer;transition:0.2s}
+.b-copy:hover{border-color:#6366f1;color:#a5b4fc}
+.b-share{padding:11px 18px;border:1px solid rgba(255,255,255,0.12);border-radius:9px;background:#171b25;color:#dbe3ef;font-weight:800;cursor:pointer;transition:0.2s}
+.b-share:hover{border-color:#00d4ff;color:#00d4ff}
+.b-play{width:52px;height:52px;border-radius:50%;border:1.5px solid #6366f1;background:#171b25;color:#a5b4fc;font-weight:900;font-size:16px;cursor:pointer;transition:0.2s}
+.b-play:hover{background:rgba(99,102,241,0.2);box-shadow:0 0 16px rgba(99,102,241,0.4)}
+.b-back{padding:11px 18px;border:1px solid rgba(255,255,255,0.12);border-radius:9px;background:#171b25;color:#fff;font-weight:800;cursor:pointer;transition:0.2s}
+.b-back:hover{background:#22293a}
+.b-fab{width:54px;height:54px;border:0;border-radius:50%;background:#6366f1;color:#fff;font-size:24px;font-weight:800;cursor:pointer;box-shadow:0 8px 25px rgba(99,102,241,0.4);transition:0.2s}
+.b-fab:hover{transform:scale(1.1) rotate(90deg);box-shadow:0 12px 30px rgba(99,102,241,0.6)}
+.b-efab{padding:12px 20px;border:0;border-radius:999px;background:#6366f1;color:#fff;font-weight:800;cursor:pointer;box-shadow:0 7px 20px rgba(99,102,241,0.3);display:flex;align-items:center;gap:8px;transition:0.2s}
+.b-efab:hover{box-shadow:0 10px 28px rgba(99,102,241,0.5);transform:translateY(-2px)}
+.b-dropdown{padding:11px 18px;border:1px solid rgba(255,255,255,0.12);border-radius:10px;background:#171b25;color:#fff;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:6px;transition:0.2s}
+.b-dropdown:hover{border-color:#6366f1}
+.b-split{display:flex;border-radius:10px;overflow:hidden;border:none;padding:0;font-weight:800;background:transparent;cursor:pointer}
+.b-split-main{padding:12px 18px;background:#6366f1;color:#fff;font-weight:800;border:none;cursor:pointer;transition:0.2s}
+.b-split-main:hover{background:#5254cc}
+.b-split-arrow{padding:12px 12px;background:#4f46e5;color:#fff;border:none;border-left:1px solid rgba(255,255,255,0.2);cursor:pointer;transition:0.2s}
+.b-split-arrow:hover{background:#4338ca}
 
-  .demo-btn-3 {
-    padding: 12px 24px; border-radius: 12px; border: 2px solid #00d4ff;
-    background: #0f172a; color: #00d4ff; font-weight: 800; cursor: pointer;
-    box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
-  }
-  .demo-btn-4 {
-    padding: 12px 24px; border-radius: 12px; border: none;
-    background: #6366f1; color: #fff; font-weight: 800; cursor: pointer;
-    box-shadow: 0 6px 0 #4338ca; transition: 0.1s;
-  }
-  .demo-btn-4:active { transform: translateY(4px); box-shadow: 0 2px 0 #4338ca; }
+/* --- CATEGORY 5: VISUAL EFFECT BUTTONS (AI + Dev) --- */
+.b-ai{padding:12px 20px;border:1px solid rgba(139,92,246,0.55);border-radius:11px;background:linear-gradient(100deg,rgba(99,102,241,0.22),rgba(0,212,255,0.1));color:#c4b5fd;font-weight:800;cursor:pointer;transition:0.2s}
+.b-ai:hover{box-shadow:0 0 20px rgba(139,92,246,0.3);border-color:rgba(139,92,246,0.8)}
+.b-command{padding:12px 20px;border:1px solid rgba(255,255,255,0.14);border-radius:9px;background:#10151f;color:#e2e8f0;font-family:'JetBrains Mono',monospace;font-weight:700;cursor:pointer;transition:0.2s}
+.b-command:hover{border-color:#00d4ff;color:#00d4ff}
+.b-terminal{padding:11px 20px;border:1px solid #10b981;border-radius:5px;background:#07120d;color:#34d399;font-family:'JetBrains Mono',monospace;font-weight:700;cursor:pointer;transition:0.2s}
+.b-terminal:hover{box-shadow:0 0 14px rgba(16,185,129,0.35)}
+.b-grad-border{padding:11px 22px;border:2px solid transparent;border-radius:11px;background:linear-gradient(#10151f,#10151f) padding-box,linear-gradient(90deg,#6366f1,#00d4ff,#ff0055) border-box;color:#fff;font-weight:800;cursor:pointer;transition:0.2s}
+.b-grad-border:hover{box-shadow:0 0 18px rgba(99,102,241,0.35)}
+.b-shimmer{padding:12px 22px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#fff;font-weight:800;background:linear-gradient(105deg,#151923 20%,#3d465b 40%,#151923 60%);background-size:280% 100%;animation:shimAnim 2.2s linear infinite;cursor:pointer}
+@keyframes shimAnim{to{background-position:-280% 0}}
+.b-glass-pill{padding:12px 26px;border:1px solid rgba(255,255,255,0.22);border-radius:999px;background:rgba(255,255,255,0.07);backdrop-filter:blur(14px);color:#fff;font-weight:800;cursor:pointer;transition:0.2s}
+.b-glass-pill:hover{background:rgba(255,255,255,0.14)}
+.b-neon-outline{padding:11px 23px;border:1.5px solid #00d4ff;border-radius:10px;background:#0a1219;color:#00d4ff;font-weight:800;cursor:pointer;box-shadow:0 0 14px rgba(0,212,255,0.3),inset 0 0 14px rgba(0,212,255,0.06);transition:0.2s}
+.b-neon-outline:hover{box-shadow:0 0 28px rgba(0,212,255,0.6),inset 0 0 20px rgba(0,212,255,0.1)}
+.b-brutal{padding:12px 22px;border:2.5px solid #fff;border-radius:2px;background:#f0f0f0;color:#07080c;font-weight:900;box-shadow:5px 5px 0 #ff0055;cursor:pointer;transition:0.2s}
+.b-brutal:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #ff0055}
+.b-metal{padding:12px 24px;border:1px solid #9ca3af;border-radius:9px;background:linear-gradient(180deg,#e5e7eb,#9ca3af 50%,#d1d5db);color:#111827;font-weight:900;text-shadow:0 1px #fff;cursor:pointer;transition:0.2s}
+.b-metal:hover{background:linear-gradient(180deg,#f3f4f6,#6b7280 50%,#e5e7eb)}
+.b-holo{padding:12px 22px;border-radius:11px;border:1px solid rgba(255,255,255,0.4);background:linear-gradient(100deg,#6366f1,#00d4ff,#10b981,#ff0055);color:#fff;font-weight:900;cursor:pointer;box-shadow:0 0 18px rgba(0,212,255,0.2);animation:holoShift 5s linear infinite}
+@keyframes holoShift{to{filter:hue-rotate(360deg)}}
+.b-double-border{padding:10px 21px;border:3px double #6366f1;border-radius:10px;background:transparent;color:#a5b4fc;font-weight:800;cursor:pointer;transition:0.2s}
+.b-double-border:hover{border-color:#00d4ff;color:#00d4ff}
+.b-dashed{padding:11px 22px;border:2px dashed #64748b;border-radius:10px;background:transparent;color:#cbd5e1;font-weight:800;cursor:pointer;transition:0.2s}
+.b-dashed:hover{border-color:#94a3b8;color:#fff}
+.b-segment{padding:10px 16px;border:1px solid rgba(255,255,255,0.12);border-radius:10px;background:#171b25;color:#dbe3ef;font-size:12px;font-weight:800;cursor:pointer;transition:0.2s}
+.b-segment:hover{background:#222a3a}
 
-  .demo-btn-5 {
-    padding: 12px 24px; border-radius: 16px; border: none;
-    background: #1e293b; color: #a5b4fc; font-weight: 800; cursor: pointer;
-    box-shadow: -4px -4px 10px rgba(255,255,255,0.05), 4px 4px 10px rgba(0,0,0,0.5);
-  }
-  .demo-btn-6 {
-    padding: 12px 24px; border-radius: 12px; border: none;
-    background: linear-gradient(90deg, #10b981, #00d4ff, #6366f1); background-size: 300% 100%;
-    color: #fff; font-weight: 800; cursor: pointer; animation: gradMove 3s linear infinite;
-  }
-  @keyframes gradMove { to { background-position: 300% 0; } }
+/* --- CATEGORY 6: MY EXTRA EXCLUSIVE ADDITIONS --- */
+.b-ripple{padding:12px 24px;border-radius:12px;border:none;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-weight:800;cursor:pointer;position:relative;overflow:hidden;transition:0.25s}
+.b-ripple::after{content:'';position:absolute;inset:0;background:radial-gradient(circle,rgba(255,255,255,0.35) 0%,transparent 65%);opacity:0;transition:opacity 0.3s}
+.b-ripple:active::after{opacity:1;animation:rippleOut 0.5s ease-out}
+@keyframes rippleOut{to{transform:scale(2.5);opacity:0}}
+.b-glitch{padding:12px 24px;border-radius:10px;border:1px solid #ff0055;background:#0a0010;color:#ff0055;font-weight:900;cursor:pointer;position:relative;font-family:'JetBrains Mono',monospace;animation:glitchAnim 3s infinite}
+@keyframes glitchAnim{2%,64%{transform:translate(2px,0) skew(0deg)}4%,60%{transform:translate(-2px,0) skew(0deg)}62%{transform:translate(0,0) skew(5deg)}96%,100%{transform:translate(0,0)}}
+.b-magnetic{padding:12px 26px;border-radius:13px;border:1px solid rgba(99,102,241,0.5);background:rgba(99,102,241,0.1);color:#a5b4fc;font-weight:800;cursor:pointer;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1)}
+.b-magnetic:hover{transform:scale(1.08);box-shadow:0 0 30px rgba(99,102,241,0.5);background:rgba(99,102,241,0.25)}
+.b-bounce-btn{padding:12px 24px;border-radius:12px;border:none;background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff;font-weight:800;cursor:pointer;animation:bouncePop 2s ease-in-out infinite}
+@keyframes bouncePop{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.b-typewriter{padding:12px 20px;border-radius:8px;border:1px solid #10b981;background:#071a11;color:#34d399;font-family:'JetBrains Mono',monospace;font-weight:700;cursor:pointer;overflow:hidden;white-space:nowrap;width:max-content;animation:typeWrite 3s steps(14) infinite}
+@keyframes typeWrite{0%,100%{width:3ch}50%{width:12ch}}
+.b-frosted-dark{padding:12px 24px;border-radius:14px;border:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.4);backdrop-filter:blur(20px) saturate(180%);color:#fff;font-weight:800;cursor:pointer;transition:0.25s}
+.b-frosted-dark:hover{border-color:rgba(255,255,255,0.2);background:rgba(0,0,0,0.6)}
+.b-aurora{padding:12px 26px;border:none;border-radius:13px;background:linear-gradient(90deg,#06b6d4,#8b5cf6,#10b981);background-size:300% 100%;color:#fff;font-weight:800;cursor:pointer;animation:auroraSweep 4s ease-in-out infinite}
+@keyframes auroraSweep{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.b-glow-ring{padding:11px 23px;border-radius:11px;border:2px solid #6366f1;background:transparent;color:#a5b4fc;font-weight:800;cursor:pointer;box-shadow:0 0 0 0 rgba(99,102,241,0.4);transition:0.25s}
+.b-glow-ring:hover{box-shadow:0 0 0 8px rgba(99,102,241,0);box-shadow:0 0 20px rgba(99,102,241,0.7),0 0 40px rgba(99,102,241,0.3);border-color:#818cf8}
+.b-ink-reveal{padding:12px 24px;border-radius:12px;border:1px solid rgba(255,255,255,0.15);background:transparent;color:#fff;font-weight:800;cursor:pointer;position:relative;overflow:hidden;transition:color 0.3s}
+.b-ink-reveal::before{content:'';position:absolute;inset:0;background:#6366f1;border-radius:12px;transform:scaleX(0);transform-origin:left;transition:transform 0.35s ease}
+.b-ink-reveal:hover::before{transform:scaleX(1)}
+.b-ink-reveal span{position:relative;z-index:1}
+.b-countdown{padding:11px 22px;border-radius:10px;border:1px solid rgba(245,158,11,0.4);background:rgba(245,158,11,0.08);color:#fbbf24;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px}
+.b-countdown::before{content:'⏱';animation:countTick 1s step-start infinite}
+@keyframes countTick{50%{opacity:0}}
 
-  .demo-btn-7 {
-    padding: 12px 24px; border: 1px solid #f59e0b; background: rgba(245, 158, 11, 0.1);
-    color: #f59e0b; font-weight: 800; cursor: pointer;
-    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-  }
-  .demo-btn-8 {
-    padding: 12px 24px; border-radius: 12px; border: 1px solid #ff0055;
-    background: #0f172a; color: #ff0055; font-weight: 800; cursor: pointer;
-    box-shadow: inset 0 0 12px rgba(255, 0, 85, 0.3);
-  }
+/* ============================================
+   KEYFRAME MOTION SECTION
+============================================ */
+.motion-wrap{max-width:1360px;margin:0 auto 80px;padding:0 24px}
+.motion-box{background:rgba(14,17,26,0.7);border:1px solid var(--border);border-radius:22px;padding:36px;text-align:center;backdrop-filter:blur(12px)}
+.motion-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px}
+.m-badge{padding:8px 16px;border-radius:10px;background:rgba(255,255,255,0.04);border:1px solid var(--border);font-size:12px;font-weight:700;color:#a5b4fc;cursor:pointer;transition:0.2s}
+.m-badge:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
 
-  /* 5. 50+ Keyframe Motion Showcase */
-  .motion-section {
-    max-width: 1200px; margin: 0 auto 96px; padding: 36px;
-    background: rgba(18, 20, 28, 0.6); border: 1px solid var(--border-color);
-    border-radius: 24px; text-align: center; backdrop-filter: blur(12px);
-  }
-  .motion-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 24px; }
-  .badge-motion {
-    padding: 8px 16px; border-radius: 10px; background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-color); font-size: 13px; font-weight: 700; color: #a5b4fc;
-    cursor: pointer; transition: 0.2s;
-  }
-  .badge-motion:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+/* ============================================
+   FOOTER
+============================================ */
+footer{border-top:1px solid var(--border);padding:44px;background:rgba(8,9,14,0.96);text-align:center;color:var(--muted);font-size:13px}
+footer strong{color:#a5b4fc}
 
-  /* 6. Footer */
-  footer {
-    border-top: 1px solid var(--border-color); padding: 48px;
-    background: rgba(10, 11, 16, 0.95); text-align: center; color: var(--text-muted); font-size: 14px;
-  }
+/* ============================================
+   RESPONSIVE
+============================================ */
+@media(max-width:1200px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)};.hero h1{font-size:38px};nav{display:none}}
+@media(max-width:520px){.grid{grid-template-columns:1fr};.stats{flex-direction:column;gap:20px}}
 </style>
 </head>
 <body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
 
-  <div class="glow-orb-1"></div>
-  <div class="glow-orb-2"></div>
+<!-- ====== HEADER ====== -->
+<header>
+  <a href="#" class="logo">
+    <div class="logo-icon">⚡</div>
+    <div class="logo-name">FrankBase <span class="logo-badge">UI</span></div>
+  </a>
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#structural">Archetypes</a>
+    <a href="#shapes">Shapes</a>
+    <a href="#states">States</a>
+    <a href="#effects">Effects</a>
+    <a href="#extras">Exclusive</a>
+    <a href="#motions">Motions</a>
+  </nav>
+  <div class="hdr-right">
+    <span class="count-pill">✦ 60+ Button Types</span>
+    <a href="#structural" class="btn-open">Explore Studio</a>
+  </div>
+</header>
 
-  <!-- 1. Header with Unified Brand Logo -->
-  <header>
-    <a href="#" class="brand-logo">
-      <div class="brand-icon">⚡</div>
-      <div class="brand-name">
-        FrankBase <span class="brand-badge">UI</span>
+<!-- ====== HERO ====== -->
+<section class="hero">
+  <div class="hero-badge">⚡ ChatGPT + Antigravity Combined Master Library</div>
+  <h1>The World's Most Complete<br><span class="grad">UI Button & Motion Library</span></h1>
+  <p>60+ Structural Archetypes, Shape Variants, State Buttons, AI & Dev Styles, and Exclusive Animations — all in one live HTML prototype. Copy any CSS in 1 click.</p>
+  <div class="hero-btns">
+    <a href="#structural" class="h-primary">🚀 Explore All 60+ Buttons</a>
+    <a href="#motions" class="h-secondary">🎬 50+ Keyframe Motions</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><h3>60+</h3><p>Unique Button Types</p></div>
+    <div class="stat"><h3>7</h3><p>Categories</p></div>
+    <div class="stat"><h3>50+</h3><p>Keyframe Animations</p></div>
+    <div class="stat"><h3>60 FPS</h3><p>Live CSS Engine</p></div>
+  </div>
+</section>
+
+<!-- ====== CATEGORY 1: STRUCTURAL ARCHETYPES ====== -->
+<section id="structural">
+  <div class="cat-label">
+    <h2>Structural Archetypes</h2>
+    <span>Original Core 8</span>
+    <div class="cat-divider"></div>
+  </div>
+  <div class="grid">
+    <div class="card"><span class="card-num">01. Frosted Glass</span><div class="card-wrap"><button class="b-glass">Glassmorphism</button></div><p class="card-desc">Backdrop-blur + transparent glass refraction</p></div>
+    <div class="card"><span class="card-num">02. Cyberpunk Neon Pulse</span><div class="card-wrap"><button class="b-neon-pulse">Cyber Pulse</button></div><p class="card-desc">Animated neon glow aura with pulsing box-shadow</p></div>
+    <div class="card"><span class="card-num">03. Conic Rotating Border</span><div class="card-wrap"><button class="b-conic">Conic Orbit</button></div><p class="card-desc">360° rotating conic gradient beam border</p></div>
+    <div class="card"><span class="card-num">04. 3D Tactical Push</span><div class="card-wrap"><button class="b-3d">3D Push Down</button></div><p class="card-desc">Physical extruded shadow + active press translate</p></div>
+    <div class="card"><span class="card-num">05. Neumorphic Soft</span><div class="card-wrap"><button class="b-neuro">Soft Embossed</button></div><p class="card-desc">Dual inset/outset soft shadow tactile depth</p></div>
+    <div class="card"><span class="card-num">06. Multi-Color Gradient Flow</span><div class="card-wrap"><button class="b-grad-move">Flowing Colors</button></div><p class="card-desc">400% moving 4-color linear gradient animation</p></div>
+    <div class="card"><span class="card-num">07. Sci-Fi Polygon Cut</span><div class="card-wrap"><button class="b-polygon">Cut Corner</button></div><p class="card-desc">Clip-path 45° polygon architectural outline</p></div>
+    <div class="card"><span class="card-num">08. Synthwave Retro</span><div class="card-wrap"><button class="b-synthwave">Retro Neon</button></div><p class="card-desc">80s neon inset glow + text-shadow treatment</p></div>
+  </div>
+</section>
+
+<!-- ====== CATEGORY 2: SHAPE VARIANTS ====== -->
+<section id="shapes">
+  <div class="cat-label">
+    <h2>Shape & Form Variants</h2>
+    <span>ChatGPT + Extra</span>
+    <div class="cat-divider"></div>
+  </div>
+  <div class="grid">
+    <div class="card"><span class="card-num">09. Pill Button</span><div class="card-wrap"><button class="b-pill">Pill Button</button></div><p class="card-desc">Fully rounded 999px pill shape</p></div>
+    <div class="card"><span class="card-num">10. Outline Button</span><div class="card-wrap"><button class="b-outline">Outline</button></div><p class="card-desc">Transparent surface with strong border</p></div>
+    <div class="card"><span class="card-num">11. Ghost Button</span><div class="card-wrap"><button class="b-ghost">Ghost Button</button></div><p class="card-desc">Minimal transparent action surface</p></div>
+    <div class="card"><span class="card-num">12. Text-Only Button</span><div class="card-wrap"><button class="b-text-only">Text Link</button></div><p class="card-desc">Low-emphasis text-only hyperlink action</p></div>
+    <div class="card"><span class="card-num">13. Icon Button</span><div class="card-wrap"><button class="b-icon">＋</button></div><p class="card-desc">Compact icon-only control (48×48)</p></div>
+    <div class="card"><span class="card-num">14. Circle Button</span><div class="card-wrap"><button class="b-circle">✓</button></div><p class="card-desc">Circular action control (52×52)</p></div>
+    <div class="card"><span class="card-num">15. Square Button</span><div class="card-wrap"><button class="b-square">⚙</button></div><p class="card-desc">Compact square control (50×50)</p></div>
+    <div class="card"><span class="card-num">16. Icon + Text</span><div class="card-wrap"><button class="b-icon-text">＋ Add New</button></div><p class="card-desc">Icon combined with text label</p></div>
+    <div class="card"><span class="card-num">17. Segmented Control</span><div class="card-wrap"><button class="b-segment">Day &nbsp;|&nbsp; Week &nbsp;|&nbsp; Month</button></div><p class="card-desc">Grouped selection buttons bar</p></div>
+    <div class="card"><span class="card-num">18. Split Button</span><div class="card-wrap"><div class="b-split"><button class="b-split-main">Save</button><button class="b-split-arrow">▾</button></div></div><p class="card-desc">Primary action + dropdown affordance</p></div>
+    <div class="card"><span class="card-num">19. Dropdown Button</span><div class="card-wrap"><button class="b-dropdown">Options &nbsp;▾</button></div><p class="card-desc">Action with dropdown menu indicator</p></div>
+    <div class="card"><span class="card-num">20. Double Border</span><div class="card-wrap"><button class="b-double-border">Double Border</button></div><p class="card-desc">CSS double border treatment</p></div>
+    <div class="card"><span class="card-num">21. Dashed Border</span><div class="card-wrap"><button class="b-dashed">Dashed</button></div><p class="card-desc">Dashed outline button style</p></div>
+  </div>
+</section>
+
+<!-- ====== CATEGORY 3: STATE BUTTONS ====== -->
+<section id="states">
+  <div class="cat-label">
+    <h2>State & Feedback Buttons</h2>
+    <span>Interactive States</span>
+    <div class="cat-divider"></div>
+  </div>
+  <div class="grid">
+    <div class="card"><span class="card-num">22. Toggle Button</span><div class="card-wrap"><button class="b-toggle">ON &nbsp;●</button></div><p class="card-desc">On/off persistent state control</p></div>
+    <div class="card"><span class="card-num">23. Loading Button</span><div class="card-wrap"><button class="b-loading">Loading...</button></div><p class="card-desc">Spinner processing state with CSS animation</p></div>
+    <div class="card"><span class="card-num">24. Success Button</span><div class="card-wrap"><button class="b-success">✓ &nbsp;Success</button></div><p class="card-desc">Positive completion state</p></div>
+    <div class="card"><span class="card-num">25. Error Button</span><div class="card-wrap"><button class="b-error">✕ &nbsp;Delete</button></div><p class="card-desc">Destructive / danger state</p></div>
+    <div class="card"><span class="card-num">26. Warning Button</span><div class="card-wrap"><button class="b-warning">⚠ &nbsp;Warning</button></div><p class="card-desc">Cautionary action feedback state</p></div>
+    <div class="card"><span class="card-num">27. Disabled Button</span><div class="card-wrap"><button class="b-disabled" disabled>Disabled</button></div><p class="card-desc">Inactive / unavailable state</p></div>
+    <div class="card"><span class="card-num">28. Active/Pressed State</span><div class="card-wrap"><button class="b-active">● &nbsp;Active</button></div><p class="card-desc">Currently selected / active state</p></div>
+  </div>
+</section>
+
+<!-- ====== CATEGORY 4: ACTION & UTILITY ====== -->
+<section id="actions">
+  <div class="cat-label">
+    <h2>Action & Utility Buttons</h2>
+    <span>Functional UX</span>
+    <div class="cat-divider"></div>
+  </div>
+  <div class="grid">
+    <div class="card"><span class="card-num">29. Download Button</span><div class="card-wrap"><button class="b-download">↓ &nbsp;Download</button></div><p class="card-desc">File download action affordance</p></div>
+    <div class="card"><span class="card-num">30. Upload Button</span><div class="card-wrap"><button class="b-upload">↑ &nbsp;Upload</button></div><p class="card-desc">File upload action affordance</p></div>
+    <div class="card"><span class="card-num">31. Copy Button</span><div class="card-wrap"><button class="b-copy">▣ &nbsp;Copy Code</button></div><p class="card-desc">Copy-to-clipboard action</p></div>
+    <div class="card"><span class="card-num">32. Share Button</span><div class="card-wrap"><button class="b-share">↗ &nbsp;Share</button></div><p class="card-desc">Share action with icon</p></div>
+    <div class="card"><span class="card-num">33. Play Button</span><div class="card-wrap"><button class="b-play">▶</button></div><p class="card-desc">Media playback circular control</p></div>
+    <div class="card"><span class="card-num">34. Back Navigation</span><div class="card-wrap"><button class="b-back">← &nbsp;Back</button></div><p class="card-desc">Previous page navigation</p></div>
+    <div class="card"><span class="card-num">35. FAB (Floating Action)</span><div class="card-wrap"><button class="b-fab">+</button></div><p class="card-desc">Floating action button with hover spin</p></div>
+    <div class="card"><span class="card-num">36. Extended FAB</span><div class="card-wrap"><button class="b-efab">＋ &nbsp;Create New</button></div><p class="card-desc">Floating action with icon + label</p></div>
+  </div>
+</section>
+
+<!-- ====== CATEGORY 5: VISUAL EFFECTS ====== -->
+<section id="effects">
+  <div class="cat-label">
+    <h2>Visual Effect & Style Buttons</h2>
+    <span>AI + Dev + Special</span>
+    <div class="cat-divider"></div>
+  </div>
+  <div class="grid">
+    <div class="card"><span class="card-num">37. AI Generate Button</span><div class="card-wrap"><button class="b-ai">✦ Generate with AI</button></div><p class="card-desc">AI-generation action pattern</p></div>
+    <div class="card"><span class="card-num">38. Command Palette</span><div class="card-wrap"><button class="b-command">⌘ &nbsp;Command</button></div><p class="card-desc">Developer command launcher style</p></div>
+    <div class="card"><span class="card-num">39. Terminal Button</span><div class="card-wrap"><button class="b-terminal">&gt;_ RUN</button></div><p class="card-desc">Developer console inspired button</p></div>
+    <div class="card"><span class="card-num">40. Gradient Border</span><div class="card-wrap"><button class="b-grad-border">Gradient Border</button></div><p class="card-desc">Multi-color gradient outline button</p></div>
+    <div class="card"><span class="card-num">41. Shimmer Button</span><div class="card-wrap"><button class="b-shimmer">Shimmer Sweep</button></div><p class="card-desc">Moving shimmer background animation</p></div>
+    <div class="card"><span class="card-num">42. Glass Pill</span><div class="card-wrap"><button class="b-glass-pill">Glass Pill</button></div><p class="card-desc">Pill geometry with glass surface</p></div>
+    <div class="card"><span class="card-num">43. Neon Outline</span><div class="card-wrap"><button class="b-neon-outline">Neon Outline</button></div><p class="card-desc">High-contrast neon border + inset glow</p></div>
+    <div class="card"><span class="card-num">44. Brutalist Button</span><div class="card-wrap"><button class="b-brutal">BRUTAL</button></div><p class="card-desc">Hard border + solid offset shadow</p></div>
+    <div class="card"><span class="card-num">45. Metallic Button</span><div class="card-wrap"><button class="b-metal">Metallic</button></div><p class="card-desc">Metallic linear gradient treatment</p></div>
+    <div class="card"><span class="card-num">46. Holographic Button</span><div class="card-wrap"><button class="b-holo">Holographic</button></div><p class="card-desc">Rainbow hue-rotating holographic surface</p></div>
+  </div>
+</section>
+
+<!-- ====== CATEGORY 6: EXCLUSIVE ADDITIONS (My New) ====== -->
+<section id="extras">
+  <div class="cat-label">
+    <h2>Exclusive Antigravity Additions</h2>
+    <span>🔥 New Originals</span>
+    <div class="cat-divider"></div>
+  </div>
+  <div class="grid">
+    <div class="card"><span class="card-num">47. Ripple Button</span><div class="card-wrap"><button class="b-ripple">Ripple Click</button></div><p class="card-desc">Radial ripple burst on :active press</p></div>
+    <div class="card"><span class="card-num">48. Glitch Effect</span><div class="card-wrap"><button class="b-glitch">GL!TCH</button></div><p class="card-desc">Horizontal translate skew glitch animation</p></div>
+    <div class="card"><span class="card-num">49. Magnetic Button</span><div class="card-wrap"><button class="b-magnetic">Magnetic</button></div><p class="card-desc">Spring-physics elastic scale on hover</p></div>
+    <div class="card"><span class="card-num">50. Bounce Button</span><div class="card-wrap"><button class="b-bounce-btn">Bounce!</button></div><p class="card-desc">Perpetual vertical bounce keyframe loop</p></div>
+    <div class="card"><span class="card-num">51. Aurora Wave</span><div class="card-wrap"><button class="b-aurora">Aurora</button></div><p class="card-desc">3-color position-shifting aurora gradient</p></div>
+    <div class="card"><span class="card-num">52. Glow Ring Expand</span><div class="card-wrap"><button class="b-glow-ring">Glow Ring</button></div><p class="card-desc">Expanding box-shadow ring on hover</p></div>
+    <div class="card"><span class="card-num">53. Ink Reveal</span><div class="card-wrap"><button class="b-ink-reveal"><span>Ink Reveal</span></button></div><p class="card-desc">scaleX fill animation on hover via pseudo</p></div>
+    <div class="card"><span class="card-num">54. Frosted Dark</span><div class="card-wrap"><button class="b-frosted-dark">Frosted Dark</button></div><p class="card-desc">Deep black frosted glass + saturate filter</p></div>
+    <div class="card"><span class="card-num">55. Countdown/Pulse</span><div class="card-wrap"><button class="b-countdown">Countdown</button></div><p class="card-desc">Blinking timer icon with badge style</p></div>
+    <div class="card"><span class="card-num">56. Typewriter Button</span><div class="card-wrap"><button class="b-typewriter">&gt;_ Run Script</button></div><p class="card-desc">CSS steps() typewriter width animation</p></div>
+  </div>
+</section>
+
+<!-- ====== KEYFRAME MOTIONS SHOWCASE ====== -->
+<section id="motions">
+  <div class="motion-wrap">
+    <div class="motion-box">
+      <div class="section-title">
+        <h2>50+ Keyframe Animation Library</h2>
+        <p>Attach any of these motion classes to any button for instant live animation</p>
       </div>
-    </a>
-
-    <nav>
-      <a href="#" class="active">Home</a>
-      <a href="#archetypes">8 Core Archetypes</a>
-      <a href="#motions">50+ Keyframes</a>
-      <a href="#docs">Docs & SEO</a>
-    </nav>
-
-    <div class="header-actions">
-      <div class="search-pill">
-        <span>🔍 Search 2,000+ Buttons...</span>
-        <kbd style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 10px;">⌘K</kbd>
-      </div>
-      <a href="#archetypes" class="btn-primary-sm">Open Studio</a>
-    </div>
-  </header>
-
-  <!-- 2. Hero Section -->
-  <section class="hero">
-    <div class="badge-tag">✨ Complete Exhaustive Component Engine</div>
-    <h1>
-      The World's Most Powerful <br>
-      <span class="gradient-text">UI Component & Motion Library</span>
-    </h1>
-    <p>
-      Explore 30+ Categories, 2,000+ Structural Button Archetypes, 50+ Keyframe Animations, and a 60 FPS No-Code Live Studio. Copy pure production HTML & CSS in 1 click.
-    </p>
-    <div class="hero-buttons">
-      <a href="#archetypes" class="btn-hero-primary">🚀 Explore 8 Core Archetypes</a>
-      <a href="#motions" class="btn-hero-secondary">🎬 Test 50+ Keyframe Motions</a>
-    </div>
-
-    <!-- Live Stats Ribbon -->
-    <div class="stats-ribbon">
-      <div class="stat-item">
-        <h3>30+</h3>
-        <p>Categories</p>
-      </div>
-      <div class="stat-item">
-        <h3>2,000+</h3>
-        <p>Unique Buttons</p>
-      </div>
-      <div class="stat-item">
-        <h3>50+</h3>
-        <p>Keyframe Animations</p>
-      </div>
-      <div class="stat-item">
-        <h3>60 FPS</h3>
-        <p>Live Studio</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. Expanded 8 Structural Archetype Cards Grid -->
-  <section id="archetypes">
-    <div class="section-title">
-      <h2>Explore 8 Core Structural Archetypes</h2>
-      <p>Every card represents a distinct structural & motion mechanism</p>
-    </div>
-
-    <div class="grid-container">
-      
-      <!-- Card 1 -->
-      <div class="card">
-        <span class="card-tag">01. Frosted Glass</span>
-        <div style="margin: 28px 0;">
-          <button class="demo-btn-1">Glassmorphism</button>
-        </div>
-        <p style="font-size: 12px; color: var(--text-muted);">Backdrop-blur 16px & transparent glass refraction.</p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="card">
-        <span class="card-tag">02. Cyberpunk Neon</span>
-        <div style="margin: 28px 0;">
-          <button class="demo-btn-2">Cyber Pulse</button>
-        </div>
-        <p style="font-size: 12px; color: var(--text-muted);">Multi-color neon glow aura & pulsing box-shadow.</p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="card">
-        <span class="card-tag">03. Rotating Border</span>
-        <div style="margin: 28px 0;">
-          <button class="demo-btn-3">Conic Orbit</button>
-        </div>
-        <p style="font-size: 12px; color: var(--text-muted);">360° rotating conic gradient beam around border edge.</p>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="card">
-        <span class="card-tag">04. 3D Tactical Push</span>
-        <div style="margin: 28px 0;">
-          <button class="demo-btn-4">3D Push Down</button>
-        </div>
-        <p style="font-size: 12px; color: var(--text-muted);">Physical extruded thickness & active press translation.</p>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="card">
-        <span class="card-tag">05. Neumorphic Soft</span>
-        <div style="margin: 28px 0;">
-          <button class="demo-btn-5">Soft Embossed</button>
-        </div>
-        <p style="font-size: 12px; color: var(--text-muted);">Dual inset/outset soft shadow depth for tactile feel.</p>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="card">
-        <span class="card-tag">06. Multi Gradient</span>
-        <div style="margin: 28px 0;">
-          <button class="demo-btn-6">Flowing Colors</button>
-        </div>
-        <p style="font-size: 12px; color: var(--text-muted);">300% moving multi-color linear gradient loop.</p>
-      </div>
-
-      <!-- Card 7 -->
-      <div class="card">
-        <span class="card-tag">07. Sci-Fi Polygon</span>
-        <div style="margin: 28px 0;">
-          <button class="demo-btn-7">Cut Corner</button>
-        </div>
-        <p style="font-size: 12px; color: var(--text-muted);">45° polygon clipped corner architectural outline.</p>
-      </div>
-
-      <!-- Card 8 -->
-      <div class="card">
-        <span class="card-tag">08. Synthwave Glow</span>
-        <div style="margin: 28px 0;">
-          <button class="demo-btn-8">Retro Neon</button>
-        </div>
-        <p style="font-size: 12px; color: var(--text-muted);">80s synthwave neon grid & inset shimmer light.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 4. 50+ Keyframes Motion Showcase Section -->
-  <section id="motions">
-    <div class="motion-section">
-      <div class="section-title" style="margin-bottom: 16px;">
-        <h2>50+ Keyframe Animations Library</h2>
-        <p>Combine any Motion, Color, Text, and Border Keyframes in 1 Click</p>
-      </div>
-
       <div class="motion-badges">
-        <span class="badge-motion">🎬 Pulse (breathe)</span>
-        <span class="badge-motion">🎬 Bounce (vertical)</span>
-        <span class="badge-motion">🎬 Shake (horizontal)</span>
-        <span class="badge-motion">🎬 Float (smooth)</span>
-        <span class="badge-motion">🎬 Heartbeat</span>
-        <span class="badge-motion">🎬 Swing 3D</span>
-        <span class="badge-motion">🎬 Jello Skew</span>
-        <span class="badge-motion">🌈 Rainbow Hue</span>
-        <span class="badge-motion">🌈 Moving Gradient</span>
-        <span class="badge-motion">🔤 Text Shimmer</span>
-        <span class="badge-motion">🔤 Text Glitch RGB</span>
-        <span class="badge-motion">💫 360° Conic Spin</span>
-        <span class="badge-motion">🌠 Border Light Sweep</span>
-        <span class="badge-motion">⚡ Cyber Neon Glow</span>
+        <span class="m-badge">🎬 Pulse Breathe</span>
+        <span class="m-badge">🎬 Vertical Bounce</span>
+        <span class="m-badge">🎬 Horizontal Shake</span>
+        <span class="m-badge">🎬 Float Smooth</span>
+        <span class="m-badge">🎬 Heartbeat</span>
+        <span class="m-badge">🎬 Swing 3D</span>
+        <span class="m-badge">🎬 Jello Skew</span>
+        <span class="m-badge">🎬 Spring Pop</span>
+        <span class="m-badge">🎬 Rubber Band</span>
+        <span class="m-badge">🌈 Rainbow Hue-Rotate</span>
+        <span class="m-badge">🌈 Moving Gradient</span>
+        <span class="m-badge">🌈 Aurora Position Shift</span>
+        <span class="m-badge">🔤 Text Shimmer</span>
+        <span class="m-badge">🔤 Text Glitch RGB Split</span>
+        <span class="m-badge">🔤 Typewriter Steps()</span>
+        <span class="m-badge">💫 360° Conic Spin</span>
+        <span class="m-badge">💫 Hue-Rotate Loop</span>
+        <span class="m-badge">🌠 Border Light Sweep</span>
+        <span class="m-badge">⚡ Neon Glow Pulse</span>
+        <span class="m-badge">⚡ Ripple Radial Burst</span>
+        <span class="m-badge">🎯 scaleX Ink Fill</span>
+        <span class="m-badge">🎯 Elastic Spring</span>
+        <span class="m-badge">🎯 Counter Clockwise</span>
+        <span class="m-badge">🔲 Box-Shadow Expand</span>
+        <span class="m-badge">🔲 Outline Draw</span>
+        <span class="m-badge">🔲 Shimmer Sweep</span>
+        <span class="m-badge">👆 Hover Lift</span>
+        <span class="m-badge">👆 Hover Scale</span>
+        <span class="m-badge">🖱️ Cursor Glow Trail</span>
+        <span class="m-badge">🖱️ Magnetic Attract</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 5. Footer -->
-  <footer>
-    <p>© 2026 FrankBase UI — Ultimate Master Prototype. HTML First Methodology Active!</p>
-  </footer>
-
+<!-- ====== FOOTER ====== -->
+<footer>
+  <p>© 2026 <strong>FrankBase UI</strong> — Master Button Library &amp; Motion Prototype &nbsp;|&nbsp; ChatGPT + Antigravity Combined &nbsp;|&nbsp; HTML First Methodology ✓</p>
+</footer>
 </body>
 </html>

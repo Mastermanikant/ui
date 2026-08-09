@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FrankBase UI — Ultimate Homepage Design Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #07080c;
+    --card-bg: rgba(18, 20, 28, 0.75);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --primary: #6366f1;
+    --primary-glow: rgba(99, 102, 241, 0.35);
+    --accent-cyan: #00d4ff;
+    --accent-pink: #ff0055;
+    --accent-amber: #f59e0b;
+    --accent-emerald: #10b981;
+    --text-white: #ffffff;
+    --text-muted: #94a3b8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Ambient Glow Orbs */
+  .glow-orb-1 {
+    position: absolute; top: -100px; left: 20%; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, transparent 70%);
+    filter: blur(90px); pointer-events: none; z-index: 0;
+  }
+  .glow-orb-2 {
+    position: absolute; top: 400px; right: 10%; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255, 0, 85, 0.16) 0%, transparent 70%);
+    filter: blur(100px); pointer-events: none; z-index: 0;
+  }
+
+  /* 1. Header & Unified Brand Logo */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    height: 72px; padding: 0 48px;
+    background: rgba(13, 15, 23, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .brand-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; cursor: pointer;
+  }
+  .brand-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: linear-gradient(135deg, #6366f1, #ff0055);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+  }
+  .brand-name {
+    font-size: 20px; font-weight: 900; color: #ffffff;
+    display: flex; align-items: center; gap: 6px; letter-spacing: -0.02em;
+  }
+  .brand-badge {
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    color: #ffffff; font-size: 11px; font-weight: 800;
+    padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+
+  nav { display: flex; gap: 28px; font-size: 14px; font-weight: 600; }
+  nav a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  nav a:hover, nav a.active { color: #ffffff; }
+
+  .header-actions { display: flex; align-items: center; gap: 16px; }
+  .search-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px; border-radius: 99px;
+    font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; cursor: pointer;
+  }
+  .btn-primary-sm {
+    background: linear-gradient(90deg, var(--primary), #8b5cf6);
+    color: #fff; padding: 10px 20px; border-radius: 10px;
+    font-size: 13px; font-weight: 700; text-decoration: none;
+    box-shadow: 0 4px 14px var(--primary-glow); transition: transform 0.2s;
+  }
+  .btn-primary-sm:hover { transform: translateY(-2px); }
+
+  /* 2. Hero Section */
+  .hero {
+    position: relative; z-index: 1;
+    padding: 80px 24px 48px; text-align: center; max-width: 1050px; margin: 0 auto;
+  }
+  .badge-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3);
+    color: #a5b4fc; padding: 6px 18px; border-radius: 99px;
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: 58px; font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 24px;
+  }
+  .gradient-text {
+    background: linear-gradient(90deg, #6366f1, #00d4ff, #ff0055);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero p {
+    font-size: 18px; color: var(--text-muted); max-width: 720px; margin: 0 auto 40px; font-weight: 500;
+  }
+  .hero-buttons { display: flex; justify-content: center; gap: 16px; margin-bottom: 54px; }
+  .btn-hero-primary {
+    background: linear-gradient(90deg, var(--primary), var(--accent-pink));
+    color: #fff; padding: 16px 36px; border-radius: 14px;
+    font-size: 16px; font-weight: 800; text-decoration: none;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4); transition: all 0.25s;
+  }
+  .btn-hero-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 40px rgba(99, 102, 241, 0.6); }
+  .btn-hero-secondary {
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color);
+    color: #fff; padding: 16px 36px; border-radius: 14px;
+    font-size: 16px; font-weight: 700; text-decoration: none; transition: background 0.2s;
+  }
+
+  /* Stats Ribbon */
+  .stats-ribbon {
+    display: flex; justify-content: center; gap: 48px;
+    padding: 24px 36px; background: rgba(18, 20, 28, 0.6);
+    border: 1px solid var(--border-color); border-radius: 20px;
+    max-width: 900px; margin: 0 auto 80px; backdrop-filter: blur(12px);
+  }
+  .stat-item h3 { font-size: 32px; font-weight: 900; color: #fff; }
+  .stat-item p { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+
+  /* 3. Section Titles */
+  .section-title { text-align: center; margin-bottom: 48px; }
+  .section-title h2 { font-size: 36px; font-weight: 900; letter-spacing: -0.02em; }
+  .section-title p { color: var(--text-muted); font-size: 15px; margin-top: 8px; }
+
+  /* 4. Expanded 8 Archetype Cards Grid */
+  .grid-container {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px; max-width: 1240px; margin: 0 auto 96px; padding: 0 24px;
+  }
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border-color);
+    border-radius: 20px; padding: 28px 24px; text-align: center;
+    position: relative; overflow: hidden; transition: all 0.3s;
+    display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 250px;
+  }
+  .card:hover {
+    border-color: rgba(99, 102, 241, 0.5);
+    transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  }
+  .card-tag { font-size: 11px; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+
+  /* Sample Interactive Buttons */
+  .demo-btn-1 {
+    padding: 12px 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px);
+    color: #fff; font-weight: 700; cursor: pointer; transition: 0.25s;
+  }
+  .demo-btn-2 {
+    padding: 12px 24px; border-radius: 99px; border: none;
+    background: linear-gradient(90deg, #ff0055, #6366f1);
+    color: #fff; font-weight: 800; cursor: pointer;
+    box-shadow: 0 0 22px rgba(255, 0, 85, 0.6); animation: pulseGlow 2s infinite;
+  }
+  @keyframes pulseGlow { 50% { box-shadow: 0 0 35px rgba(255, 0, 85, 0.9); } }
+
+  .demo-btn-3 {
+    padding: 12px 24px; border-radius: 12px; border: 2px solid #00d4ff;
+    background: #0f172a; color: #00d4ff; font-weight: 800; cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+  }
+  .demo-btn-4 {
+    padding: 12px 24px; border-radius: 12px; border: none;
+    background: #6366f1; color: #fff; font-weight: 800; cursor: pointer;
+    box-shadow: 0 6px 0 #4338ca; transition: 0.1s;
+  }
+  .demo-btn-4:active { transform: translateY(4px); box-shadow: 0 2px 0 #4338ca; }
+
+  .demo-btn-5 {
+    padding: 12px 24px; border-radius: 16px; border: none;
+    background: #1e293b; color: #a5b4fc; font-weight: 800; cursor: pointer;
+    box-shadow: -4px -4px 10px rgba(255,255,255,0.05), 4px 4px 10px rgba(0,0,0,0.5);
+  }
+  .demo-btn-6 {
+    padding: 12px 24px; border-radius: 12px; border: none;
+    background: linear-gradient(90deg, #10b981, #00d4ff, #6366f1); background-size: 300% 100%;
+    color: #fff; font-weight: 800; cursor: pointer; animation: gradMove 3s linear infinite;
+  }
+  @keyframes gradMove { to { background-position: 300% 0; } }
+
+  .demo-btn-7 {
+    padding: 12px 24px; border: 1px solid #f59e0b; background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b; font-weight: 800; cursor: pointer;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+  .demo-btn-8 {
+    padding: 12px 24px; border-radius: 12px; border: 1px solid #ff0055;
+    background: #0f172a; color: #ff0055; font-weight: 800; cursor: pointer;
+    box-shadow: inset 0 0 12px rgba(255, 0, 85, 0.3);
+  }
+
+  /* 5. 50+ Keyframe Motion Showcase */
+  .motion-section {
+    max-width: 1200px; margin: 0 auto 96px; padding: 36px;
+    background: rgba(18, 20, 28, 0.6); border: 1px solid var(--border-color);
+    border-radius: 24px; text-align: center; backdrop-filter: blur(12px);
+  }
+  .motion-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 24px; }
+  .badge-motion {
+    padding: 8px 16px; border-radius: 10px; background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color); font-size: 13px; font-weight: 700; color: #a5b4fc;
+    cursor: pointer; transition: 0.2s;
+  }
+  .badge-motion:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+  /* 6. Footer */
+  footer {
+    border-top: 1px solid var(--border-color); padding: 48px;
+    background: rgba(10, 11, 16, 0.95); text-align: center; color: var(--text-muted); font-size: 14px;
+  }
+</style>
+
+<style>
+:root{--bg:#07080c;--panel:#10131b;--panel2:#0c0f15;--line:rgba(255,255,255,.09);--muted:#8993a6;--text:#f8fafc;--primary:#6366f1;--cyan:#00d4ff;--pink:#ff0055}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif}
+button,select,input{font:inherit}
+button{cursor:pointer}
+.ambient{position:fixed;pointer-events:none;filter:blur(100px);z-index:-1;border-radius:50%}
+.ambient-a{width:500px;height:500px;top:-180px;left:15%;background:rgba(99,102,241,.15)}
+.ambient-b{width:450px;height:450px;right:-120px;top:520px;background:rgba(0,212,255,.08)}
+.topbar{height:74px;padding:0 42px;position:sticky;top:0;z-index:20;background:rgba(7,8,12,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:11px;align-items:center}.brand-mark{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,#6366f1,#ff0055);box-shadow:0 8px 25px rgba(99,102,241,.28)}.brand-name{font-weight:900;font-size:18px}.brand-name span{font-size:10px;background:#6366f1;padding:3px 6px;border-radius:5px;margin-left:3px}.brand-sub{font-size:9px;color:#697386;text-transform:uppercase;letter-spacing:.12em}
+.topnav{display:flex;gap:30px}.topnav a{color:#818b9f;text-decoration:none;font-size:13px;font-weight:700}.topnav a.active,.topnav a:hover{color:#fff}
+.top-actions{display:flex;gap:10px}.search-btn,.header-btn{border:1px solid var(--line);color:#aab3c3;background:#0d1017;border-radius:10px;padding:9px 12px}.search-btn span{margin:0 28px 0 7px;color:#737d90;font-size:12px}.search-btn kbd{font-size:9px;background:#171b25;padding:3px 5px;border-radius:4px}.header-btn{background:linear-gradient(135deg,#6366f1,#805cf5);color:#fff;border:0;font-weight:800}
+.hero{max-width:1050px;text-align:center;margin:auto;padding:86px 24px 46px}.eyebrow,.mini-label,.side-title,.filter-label{font-size:10px;font-weight:900;letter-spacing:.14em;color:#788399}.eyebrow{display:inline-block;color:#a5b4fc;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.22);padding:7px 14px;border-radius:999px}.hero h1{font-size:58px;line-height:1.08;margin:20px 0 18px;letter-spacing:-.045em}.hero h1 span{background:linear-gradient(90deg,#6366f1,#00d4ff,#ff0055);-webkit-background-clip:text;color:transparent}.hero p{max-width:700px;margin:auto;color:#8e98aa;font-size:16px}.hero-actions{display:flex;justify-content:center;gap:12px;margin-top:30px}.hero-primary,.hero-secondary{padding:13px 22px;border-radius:11px;font-weight:800;border:1px solid var(--line)}.hero-primary{color:#fff;background:linear-gradient(90deg,#6366f1,#805cf5);box-shadow:0 10px 30px rgba(99,102,241,.22)}.hero-secondary{color:#d7dce6;background:#11141c}
+.stats{max-width:1050px;margin:0 auto 75px;padding:20px 28px;display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);background:rgba(16,19,27,.7);border-radius:18px}.stats div{text-align:center;border-right:1px solid var(--line)}.stats div:last-child{border:0}.stats strong{display:block;font-size:25px}.stats span{color:#788294;font-size:10px;text-transform:uppercase;font-weight:800}
+.workspace{max-width:1320px;margin:auto;padding:0 24px 90px;display:grid;grid-template-columns:230px 1fr;gap:32px}.sidebar{border:1px solid var(--line);background:rgba(13,16,23,.8);border-radius:16px;padding:17px;height:max-content;position:sticky;top:94px}.side-search{margin:14px 0;padding:10px;background:#090c12;border:1px solid var(--line);border-radius:8px;color:#667084;font-size:11px}.filter-group{margin:20px 0}.filter-label{margin-bottom:8px}.filter{display:flex;width:100%;justify-content:space-between;background:transparent;border:0;color:#818b9f;padding:9px;border-radius:7px;text-align:left;font-size:11px}.filter b{font-size:9px;color:#555f70}.filter:hover,.filter.active{background:rgba(99,102,241,.11);color:#c8ceff}.filter.active b{color:#8e95ff}.side-footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);font-size:10px;color:#778195}.coverage{height:5px;background:#191d27;border-radius:5px;margin:8px 0}.coverage span{display:block;width:72%;height:100%;background:linear-gradient(90deg,#6366f1,#00d4ff);border-radius:5px}.library-content{min-width:0}.content-head,.section-heading{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px}.content-head h2,.section-heading h2{font-size:28px;margin:5px 0}.content-head p,.section-heading p{font-size:12px;color:#788294}.view-toggle{display:flex}.view{border:1px solid var(--line);background:#0d1017;color:#6f7889;padding:8px 12px}.view.active{color:#fff;background:#171b26}.chips{display:flex;gap:7px;margin-bottom:18px}.chip{border:1px solid var(--line);background:#0d1017;color:#7e8899;border-radius:999px;padding:7px 13px;font-size:10px}.chip.active{background:#20254a;border-color:#5058ba;color:#cdd1ff}
+.button-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.button-card{background:linear-gradient(145deg,#11151e,#0c0f15);border:1px solid var(--line);border-radius:14px;padding:15px;min-height:255px;transition:.2s}.button-card:hover{transform:translateY(-3px);border-color:rgba(99,102,241,.4)}.card-top{display:flex;justify-content:space-between;color:#555f72;font-size:9px;font-weight:900}.card-top em{font-style:normal;color:#7d87a0;text-transform:uppercase}.preview{height:105px;display:grid;place-items:center}.button-card h3{font-size:14px;margin-bottom:5px}.button-card p{font-size:10px;color:#727d90;line-height:1.5}.inspect{border:0;background:transparent;color:#8d96ff;font-size:10px;font-weight:800;margin-top:12px;padding:0}
+.p{font-weight:800;color:#fff;border:0}.standard{background:linear-gradient(90deg,#6366f1,#805cf5);padding:11px 21px;border-radius:10px}.outline{background:transparent;border:1px solid #6366f1;padding:10px 20px;border-radius:10px;color:#aeb3ff}.pill{background:linear-gradient(90deg,#ff0055,#6366f1);padding:11px 23px;border-radius:999px}.icon{width:48px;height:48px;border-radius:13px;background:#171c27;border:1px solid var(--line);font-size:22px}.toggle{display:flex;gap:9px;align-items:center;padding:8px 13px;border:1px solid var(--line);border-radius:999px;background:#171b24;color:#8b95a7;font-size:11px}.toggle i{width:28px;height:16px;background:#303646;border-radius:20px;position:relative}.toggle i:after{content:'';width:12px;height:12px;background:#788294;border-radius:50%;position:absolute;top:2px;left:2px;transition:.2s}.toggle.on{color:#fff;border-color:rgba(99,102,241,.4)}.toggle.on i{background:#6366f1}.toggle.on i:after{left:14px;background:#fff}.seg{display:flex;background:#0a0d13;padding:3px;border:1px solid var(--line);border-radius:9px}.sel{border:0;background:transparent;color:#727d90;padding:8px 9px;border-radius:6px;font-size:10px}.sel.active{background:#252a39;color:#fff}.download{padding:11px 18px;border-radius:9px;background:#17251f;color:#55e2ad}.back{padding:10px 17px;border-radius:9px;background:#151923;color:#d2d8e3}.fab{width:52px;height:52px;border-radius:50%;background:#6366f1;font-size:24px;box-shadow:0 8px 25px rgba(99,102,241,.3)}.split{display:flex}.split button{border:0;background:#6366f1;color:#fff;padding:11px 14px;font-weight:800}.split button+button{border-left:1px solid rgba(255,255,255,.25)}.split button:first-child{border-radius:9px 0 0 9px}.split button:last-child{border-radius:0 9px 9px 0}.loading{background:#191d27;padding:11px 17px;border-radius:9px;color:#aeb7c7}.loading span{display:inline-block;width:10px;height:10px;border:2px solid #5c6678;border-top-color:#fff;border-radius:50%;animation:spin 1s linear infinite}.ai{padding:11px 17px;border-radius:9px;background:linear-gradient(90deg,#25205a,#152b43);border:1px solid #41498d}
+.studio,.effects{max-width:1220px;margin:0 auto 90px;padding:0 24px}.studio-status{font-size:10px;color:#75e4b4;border:1px solid rgba(16,185,129,.25);padding:7px 10px;border-radius:999px}.studio-status i{display:inline-block;width:6px;height:6px;background:#10b981;border-radius:50%;margin-right:5px}.studio-grid{display:grid;grid-template-columns:300px 1fr;gap:15px}.controls,.live-preview{border:1px solid var(--line);background:#0e1118;border-radius:15px}.controls{padding:20px}.control{margin-bottom:20px}.control label{display:block;color:#8b95a7;font-size:10px;font-weight:800;margin-bottom:8px;text-transform:uppercase}.control select{width:100%;background:#080b11;border:1px solid var(--line);color:#dce1ea;padding:10px;border-radius:8px;outline:0}.option-row{display:flex;gap:6px}.option{background:#0a0d13;border:1px solid var(--line);color:#7d8799;border-radius:7px;padding:8px 10px;font-size:10px}.option.active{background:#25294b;color:#d3d6ff;border-color:#555cb7}.range-line{display:flex;align-items:center;gap:10px}.range-line input{flex:1}.range-line output{font-size:10px;color:#a8b1c2}.swatches{display:flex;gap:9px}.swatches button{width:24px;height:24px;border:2px solid #2a2f3c;border-radius:50%;background:var(--c)}.live-preview{overflow:hidden}.preview-toolbar{display:flex;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--line);font-size:9px;color:#6f798b;font-weight:900}.preview-toolbar button{background:transparent;border:0;color:#687386;font-size:9px}.preview-stage{height:260px;display:grid;place-items:center;background:radial-gradient(circle at center,rgba(99,102,241,.08),transparent 45%)}.live-btn{--studio-color:#6366f1;background:linear-gradient(90deg,var(--studio-color),#805cf5);color:#fff;border:0;padding:13px 25px;font-weight:800;box-shadow:0 10px 35px rgba(99,102,241,.24);transition:.2s}.glass-style{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(14px)}.neon-style{background:#09101a;box-shadow:0 0 25px var(--studio-color);border:1px solid var(--studio-color);color:var(--studio-color)}.minimal-style{background:transparent;border:1px solid var(--studio-color);color:var(--studio-color)}.three-style{background:var(--studio-color);box-shadow:0 6px 0 #373b8f}.neu-style{background:#171b24;box-shadow:-5px -5px 12px rgba(255,255,255,.04),5px 5px 12px rgba(0,0,0,.6)}.code-tabs{display:flex;border-top:1px solid var(--line);background:#0a0d12}.code-tabs button{border:0;border-right:1px solid var(--line);background:transparent;color:#707b8d;padding:11px 14px;font-size:9px}.code-tabs button.active{color:#fff}.code-tabs .copy{margin-left:auto;color:#9da6ff}.live-preview pre{margin:0;padding:16px;color:#8994aa;background:#080a0f;min-height:55px;font-size:10px;overflow:auto}
+.effects{padding-top:10px}.effect-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.effect{height:75px;background:#11151e;border:1px solid var(--line);border-radius:12px;color:#d9deea;font-weight:800}.pulse{animation:pulse 2s infinite}.float{animation:float 2s ease-in-out infinite}.shimmer{background:linear-gradient(100deg,#11151e 20%,#3a4054 40%,#11151e 60%);background-size:200% 100%;animation:shimmer 2s linear infinite}.glow{box-shadow:0 0 20px rgba(99,102,241,.5);animation:glow 1.8s infinite}.shake:hover{animation:shake .35s}.gradient-flow{background:linear-gradient(90deg,#6366f1,#00d4ff,#ff0055,#6366f1);background-size:300%;animation:grad 3s linear infinite}.border-run{border:1px solid #00d4ff;animation:borderpulse 1.5s infinite}.bounce{animation:bounce 1.5s infinite}
+footer{border-top:1px solid var(--line);padding:25px 42px;display:flex;justify-content:space-between;color:#626d80;font-size:10px}footer strong{color:#dbe0e8;margin-right:12px}
+@keyframes pulse{50%{transform:scale(1.04)}}@keyframes float{50%{transform:translateY(-7px)}}@keyframes shimmer{to{background-position:-200% 0}}@keyframes glow{50%{box-shadow:0 0 35px rgba(99,102,241,.85)}}@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}@keyframes grad{to{background-position:300% 0}}@keyframes borderpulse{50%{box-shadow:0 0 18px #00d4ff}}@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:1000px){.topnav{display:none}.button-grid{grid-template-columns:repeat(2,1fr)}.workspace{grid-template-columns:190px 1fr}.stats{grid-template-columns:repeat(3,1fr);gap:15px}.stats div:nth-child(3){border:0}.studio-grid{grid-template-columns:1fr}.effect-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.topbar{padding:0 15px}.top-actions .search-btn{display:none}.hero h1{font-size:40px}.stats{grid-template-columns:repeat(2,1fr);margin:0 15px 55px}.workspace{grid-template-columns:1fr;padding:0 15px}.sidebar{position:static}.button-grid{grid-template-columns:1fr}.hero-actions{flex-direction:column}.effects,.studio{padding:0 15px}.effect-grid{grid-template-columns:1fr 1fr}footer{padding:20px 15px;display:block}footer span{display:block;margin-top:8px}}
+</style>
+</head>
+
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">⚡</div>
+      <div>
+        <div class="brand-name">FrankBase <span>UI</span></div>
+        <div class="brand-sub">Button Laboratory</div>
+      </div>
+    </div>
+
+    <nav class="topnav">
+      <a class="active" href="#library">Library</a>
+      <a href="#studio">Studio</a>
+      <a href="#animations">Animations</a>
+      <a href="#docs">Docs</a>
+    </nav>
+
+    <div class="top-actions">
+      <button class="search-btn">⌕ <span>Search buttons...</span><kbd>Ctrl K</kbd></button>
+      <button class="header-btn">Open Studio</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">COMPLETE BUTTON DESIGN SYSTEM</div>
+      <h1>Every Button.<br><span>One Live Laboratory.</span></h1>
+      <p>Explore button types, shapes, styles, states and motion effects — then build your own button in real time.</p>
+      <div class="hero-actions">
+        <button class="hero-primary" onclick="document.querySelector('#library').scrollIntoView({behavior:'smooth'})">Explore Button Library →</button>
+        <button class="hero-secondary" onclick="document.querySelector('#studio').scrollIntoView({behavior:'smooth'})">Open Live Studio</button>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><strong>50+</strong><span>Button Types</span></div>
+      <div><strong>30+</strong><span>Visual Styles</span></div>
+      <div><strong>50+</strong><span>Animations</span></div>
+      <div><strong>12+</strong><span>Shapes</span></div>
+      <div><strong>100+</strong><span>States & Effects</span></div>
+    </section>
+
+    <section class="workspace" id="library">
+      <aside class="sidebar">
+        <div class="side-title">BUTTON LIBRARY</div>
+        <div class="side-search">⌕ Search categories...</div>
+
+        <div class="filter-group">
+          <div class="filter-label">STRUCTURE</div>
+          <button class="filter active" onclick="setCategory('All')">All Buttons <b>50+</b></button>
+          <button class="filter" onclick="setCategory('Basic')">Basic Buttons <b>12</b></button>
+          <button class="filter" onclick="setCategory('Pill')">Pill Buttons <b>8</b></button>
+          <button class="filter" onclick="setCategory('Icon')">Icon Buttons <b>8</b></button>
+          <button class="filter" onclick="setCategory('Toggle')">Toggle & Selection <b>7</b></button>
+          <button class="filter" onclick="setCategory('Action')">Action Buttons <b>9</b></button>
+          <button class="filter" onclick="setCategory('Navigation')">Navigation <b>6</b></button>
+        </div>
+
+        <div class="filter-group">
+          <div class="filter-label">SPECIAL</div>
+          <button class="filter" onclick="setCategory('FAB')">Floating Action <b>4</b></button>
+          <button class="filter" onclick="setCategory('Split')">Split / Dropdown <b>5</b></button>
+          <button class="filter" onclick="setCategory('State')">State Buttons <b>8</b></button>
+          <button class="filter" onclick="setCategory('AI')">AI / Command <b>6</b></button>
+        </div>
+
+        <div class="side-footer">
+          <div>Library coverage</div>
+          <div class="coverage"><span></span></div>
+          <small>350+ combinations ready</small>
+        </div>
+      </aside>
+
+      <section class="library-content">
+        <div class="content-head">
+          <div>
+            <div class="mini-label">BUTTON LIBRARY / <span id="currentCategory">ALL</span></div>
+            <h2>Explore Button Types</h2>
+            <p>Structural patterns first. Visual styles and motion can be layered later.</p>
+          </div>
+          <div class="view-toggle">
+            <button class="view active">▦</button><button class="view">☰</button>
+          </div>
+        </div>
+
+        <div class="chips">
+          <button class="chip active">All</button>
+          <button class="chip">Popular</button>
+          <button class="chip">New</button>
+          <button class="chip">Accessible</button>
+          <button class="chip">Mobile</button>
+        </div>
+
+        <div class="button-grid" id="buttonGrid">
+          <article class="button-card" data-cat="Basic">
+            <div class="card-top"><span>01</span><em>Basic</em></div>
+            <div class="preview"><button class="p standard">Primary Button</button></div>
+            <h3>Primary Button</h3><p>High-priority action with strong visual emphasis.</p>
+            <button class="inspect" onclick="selectType('Primary Button','Basic')">Inspect →</button>
+          </article>
+
+          <article class="button-card" data-cat="Basic">
+            <div class="card-top"><span>02</span><em>Basic</em></div>
+            <div class="preview"><button class="p outline">Outline Button</button></div>
+            <h3>Outline Button</h3><p>Secondary action using border and transparent surface.</p>
+            <button class="inspect" onclick="selectType('Outline Button','Basic')">Inspect →</button>
+          </article>
+
+          <article class="button-card" data-cat="Pill">
+            <div class="card-top"><span>03</span><em>Pill</em></div>
+            <div class="preview"><button class="p pill">Pill Button</button></div>
+            <h3>Pill Button</h3><p>Fully rounded action pattern for compact interfaces.</p>
+            <button class="inspect" onclick="selectType('Pill Button','Pill')">Inspect →</button>
+          </article>
+
+          <article class="button-card" data-cat="Icon">
+            <div class="card-top"><span>04</span><em>Icon</em></div>
+            <div class="preview"><button class="p icon">＋</button></div>
+            <h3>Icon Button</h3><p>Compact action represented primarily by an icon.</p>
+            <button class="inspect" onclick="selectType('Icon Button','Icon')">Inspect →</button>
+          </article>
+
+          <article class="button-card" data-cat="Toggle">
+            <div class="card-top"><span>05</span><em>Toggle</em></div>
+            <div class="preview"><button class="p toggle on" onclick="this.classList.toggle('on')"><i></i><span>Enabled</span></button></div>
+            <h3>Toggle Button</h3><p>Persistent on/off state with immediate visual feedback.</p>
+            <button class="inspect" onclick="selectType('Toggle Button','Toggle')">Inspect →</button>
+          </article>
+
+          <article class="button-card" data-cat="Toggle">
+            <div class="card-top"><span>06</span><em>Selection</em></div>
+            <div class="preview"><div class="seg"><button class="sel active">Day</button><button class="sel">Week</button><button class="sel">Month</button></div></div>
+            <h3>Segmented Button</h3><p>Grouped mutually exclusive selection controls.</p>
+            <button class="inspect" onclick="selectType('Segmented Button','Toggle')">Inspect →</button>
+          </article>
+
+          <article class="button-card" data-cat="Action">
+            <div class="card-top"><span>07</span><em>Action</em></div>
+            <div class="preview"><button class="p download">↓ <span>Download</span></button></div>
+            <h3>Action Button</h3><p>Purpose-built action with icon and supporting label.</p>
+            <button class="inspect" onclick="selectType('Action Button','Action')">Inspect →</button>
+          </article>
+
+          <article class="button-card" data-cat="Navigation">
+            <div class="card-top"><span>08</span><em>Navigation</em></div>
+            <div class="preview"><button class="p back">← <span>Back</span></button></div>
+            <h3>Navigation Button</h3><p>Directional control for moving through an interface.</p>
+            <button class="inspect" onclick="selectType('Navigation Button','Navigation')">Inspect →</button>
+          </article>
+
+          <article class="button-card" data-cat="FAB">
+            <div class="card-top"><span>09</span><em>FAB</em></div>
+            <div class="preview"><button class="p fab">+</button></div>
+            <h3>Floating Action Button</h3><p>Prominent circular action for mobile-first interfaces.</p>
+            <button class="inspect" onclick="selectType('Floating Action Button','FAB')">Inspect →</button>
+          </article>
+
+          <article class="button-card" data-cat="Split">
+            <div class="card-top"><span>10</span><em>Split</em></div>
+            <div class="preview"><div class="split"><button>Save</button><button>⌄</button></div></div>
+            <h3>Split Button</h3><p>Primary action combined with a secondary menu trigger.</p>
+            <button class="inspect" onclick="selectType('Split Button','Split')">Inspect →</button>
+          </article>
+
+          <article class="button-card" data-cat="State">
+            <div class="card-top"><span>11</span><em>State</em></div>
+            <div class="preview"><button class="p loading"><span></span> Processing...</button></div>
+            <h3>Loading Button</h3><p>Communicates a pending operation without losing context.</p>
+            <button class="inspect" onclick="selectType('Loading Button','State')">Inspect →</button>
+          </article>
+
+          <article class="button-card" data-cat="AI">
+            <div class="card-top"><span>12</span><em>AI</em></div>
+            <div class="preview"><button class="p ai">✦ Generate with AI</button></div>
+            <h3>AI / Command Button</h3><p>Modern command action designed for AI-powered workflows.</p>
+            <button class="inspect" onclick="selectType('AI / Command Button','AI')">Inspect →</button>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="studio" id="studio">
+      <div class="section-heading">
+        <div>
+          <div class="mini-label">LIVE STUDIO</div>
+          <h2>Build Your Button</h2>
+          <p>Change the controls and see the result instantly.</p>
+        </div>
+        <div class="studio-status"><i></i> LIVE PREVIEW</div>
+      </div>
+
+      <div class="studio-grid">
+        <aside class="controls">
+          <div class="control">
+            <label>Button Type</label>
+            <select id="typeSelect" onchange="renderStudio()">
+              <option>Primary Button</option><option>Pill Button</option><option>Outline Button</option><option>Icon Button</option><option>Toggle Button</option><option>Loading Button</option><option>AI / Command Button</option>
+            </select>
+          </div>
+          <div class="control">
+            <label>Visual Style</label>
+            <select id="styleSelect" onchange="renderStudio()">
+              <option>Gradient</option><option>Glass</option><option>Neon</option><option>Minimal</option><option>3D</option><option>Neumorphic</option>
+            </select>
+          </div>
+          <div class="control">
+            <label>Shape</label>
+            <div class="option-row" id="shapeOptions">
+              <button class="option active" onclick="choose(this,'shape','12px')">12</button>
+              <button class="option" onclick="choose(this,'shape','24px')">24</button>
+              <button class="option" onclick="choose(this,'shape','999px')">Pill</button>
+              <button class="option" onclick="choose(this,'shape','50%')">Circle</button>
+            </div>
+          </div>
+          <div class="control">
+            <label>Animation</label>
+            <select id="animationSelect" onchange="renderStudio()">
+              <option>None</option><option>Pulse</option><option>Float</option><option>Shimmer</option><option>Glow</option><option>Shake</option><option>Gradient Flow</option>
+            </select>
+          </div>
+          <div class="control">
+            <label>Size</label>
+            <div class="range-line"><input id="sizeRange" type="range" min="10" max="24" value="16" oninput="renderStudio()"><output id="sizeOut">16px</output></div>
+          </div>
+          <div class="control">
+            <label>Color</label>
+            <div class="swatches">
+              <button style="--c:#6366f1" onclick="setColor('#6366f1')"></button>
+              <button style="--c:#00d4ff" onclick="setColor('#00d4ff')"></button>
+              <button style="--c:#ff0055" onclick="setColor('#ff0055')"></button>
+              <button style="--c:#10b981" onclick="setColor('#10b981')"></button>
+              <button style="--c:#f59e0b" onclick="setColor('#f59e0b')"></button>
+            </div>
+          </div>
+        </aside>
+
+        <div class="live-preview">
+          <div class="preview-toolbar"><span>PREVIEW</span><div><button>Desktop</button><button>Mobile</button></div></div>
+          <div class="preview-stage">
+            <button id="liveButton" class="live-btn">Primary Button</button>
+          </div>
+          <div class="code-tabs"><button class="active">HTML</button><button>CSS</button><button>React</button><button>Tailwind</button><button class="copy">Copy Code</button></div>
+          <pre id="codeBox">&lt;button class="fb-button"&gt;Primary Button&lt;/button&gt;</pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="effects" id="animations">
+      <div class="section-heading">
+        <div><div class="mini-label">MOTION & EFFECTS</div><h2>Animation Playground</h2><p>Preview interaction effects independently from button structure.</p></div>
+      </div>
+      <div class="effect-grid">
+        <button class="effect pulse">Pulse</button>
+        <button class="effect float">Float</button>
+        <button class="effect shimmer">Shimmer</button>
+        <button class="effect glow">Glow</button>
+        <button class="effect shake">Shake</button>
+        <button class="effect gradient-flow">Gradient Flow</button>
+        <button class="effect border-run">Border Sweep</button>
+        <button class="effect bounce">Bounce</button>
+      </div>
+    </section>
+  </main>
+
+  <footer id="docs">
+    <div><strong>FrankBase UI</strong><span>Button Laboratory Prototype</span></div>
+    <span>HTML-first • Live preview • No-code component generation</span>
+  </footer>
+
+<script>
+let studioColor = '#6366f1';
+let studioShape = '12px';
+
+function setCategory(cat){
+  document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('currentCategory').textContent = cat.toUpperCase();
+  document.querySelectorAll('.button-card').forEach(card=>{
+    card.style.display = (cat==='All' || card.dataset.cat===cat) ? '' : 'none';
+  });
+}
+function selectType(name, cat){
+  document.getElementById('typeSelect').value = name;
+  document.getElementById('studio').scrollIntoView({behavior:'smooth'});
+  renderStudio();
+}
+function choose(el, key, value){
+  document.querySelectorAll('#shapeOptions .option').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active'); studioShape=value; renderStudio();
+}
+function setColor(c){ studioColor=c; renderStudio(); }
+function renderStudio(){
+  const btn=document.getElementById('liveButton');
+  const type=document.getElementById('typeSelect').value;
+  const style=document.getElementById('styleSelect').value;
+  const anim=document.getElementById('animationSelect').value;
+  const size=document.getElementById('sizeRange').value;
+  document.getElementById('sizeOut').textContent=size+'px';
+  btn.textContent = type.includes('Icon') ? '＋' : type.includes('AI') ? '✦ Generate with AI' : type.includes('Loading') ? 'Processing...' : type;
+  btn.style.fontSize=size+'px'; btn.style.borderRadius=studioShape; btn.style.animation='none';
+  btn.className='live-btn';
+  btn.style.setProperty('--studio-color',studioColor);
+  if(style==='Glass') btn.classList.add('glass-style');
+  if(style==='Neon') btn.classList.add('neon-style');
+  if(style==='Minimal') btn.classList.add('minimal-style');
+  if(style==='3D') btn.classList.add('three-style');
+  if(style==='Neumorphic') btn.classList.add('neu-style');
+  const map={'Pulse':'pulse','Float':'float','Shimmer':'shimmer','Glow':'glow','Shake':'shake','Gradient Flow':'gradient-flow'};
+  if(map[anim]) btn.classList.add(map[anim]);
+  document.getElementById('codeBox').textContent='<button class="fb-button">'+btn.textContent+'</button>';
+}
+document.querySelectorAll('.chips .chip').forEach(c=>c.addEventListener('click',()=>{
+  document.querySelectorAll('.chips .chip').forEach(x=>x.classList.remove('active')); c.classList.add('active');
+}));
+document.querySelectorAll('.seg').forEach(g=>g.querySelectorAll('.sel').forEach(b=>b.addEventListener('click',()=>{
+  g.querySelectorAll('.sel').forEach(x=>x.classList.remove('active')); b.classList.add('active');
+})));
+renderStudio();
+</script>
+</body>
+
+</html>
