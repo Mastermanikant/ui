@@ -1,0 +1,19 @@
+# Production build output (Generated automatically on Cloudflare Servers)
+dist/
+dist-ssr/
+
+# Dependencies
+node_modules/
+
+# Wrangler local logs
+.wrangler/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS Metadata
+.DS_Store
+Thumbs.db
