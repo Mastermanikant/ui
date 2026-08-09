@@ -241,6 +241,54 @@ nav a:hover,nav a.active{color:#fff}
 /* ============================================
    FOOTER
 ============================================ */
+/* ============================================
+   TOGGLE SWITCH STYLES (from button.html)
+============================================ */
+/* Standard Flat Switch */
+.sw-wrap{display:flex;align-items:center;gap:10px}
+.sw-label-txt{font-size:11px;color:var(--muted);font-weight:700}
+.switch-std{position:relative;display:inline-block;width:52px;height:28px}
+.switch-std input{opacity:0;width:0;height:0}
+.sl-std{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#334155;transition:.3s;border-radius:28px}
+.sl-std:before{position:absolute;content:"";height:20px;width:20px;left:4px;bottom:4px;background:#fff;transition:.3s;border-radius:50%}
+.switch-std input:checked + .sl-std{background:#6366f1}
+.switch-std input:checked + .sl-std:before{transform:translateX(24px)}
+/* iOS style */
+.switch-ios2{position:relative;display:inline-block;width:52px;height:28px}
+.switch-ios2 input{opacity:0;width:0;height:0}
+.sl-ios{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#334155;transition:.4s cubic-bezier(0.25,0.8,0.25,1);border-radius:28px}
+.sl-ios:before{position:absolute;content:"";height:22px;width:22px;left:3px;bottom:3px;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,0.3);transition:.4s cubic-bezier(0.25,0.8,0.25,1);border-radius:50%}
+.switch-ios2 input:checked + .sl-ios{background:#10b981}
+.switch-ios2 input:checked + .sl-ios:before{transform:translateX(24px)}
+/* Text Label Toggle */
+.switch-txt2{position:relative;display:inline-block;width:70px;height:28px}
+.switch-txt2 input{opacity:0;width:0;height:0}
+.sl-txt{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ef4444;transition:.3s;border-radius:28px}
+.sl-txt:before{position:absolute;content:"OFF";color:#ef4444;font-size:9px;font-weight:800;text-align:center;line-height:20px;height:20px;width:28px;left:4px;bottom:4px;background:#fff;transition:.3s;border-radius:16px}
+.switch-txt2 input:checked + .sl-txt{background:#10b981}
+.switch-txt2 input:checked + .sl-txt:before{content:"ON";color:#10b981;transform:translateX(34px)}
+/* Dark Mode Toggle */
+.switch-dm{position:relative;display:inline-block;width:56px;height:28px}
+.switch-dm input{opacity:0;width:0;height:0}
+.sl-dm{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#87CEEB;transition:.4s;border-radius:28px}
+.sl-dm:before{position:absolute;content:"☀️";font-size:13px;display:flex;align-items:center;justify-content:center;height:22px;width:22px;left:3px;bottom:3px;background:#FFD700;transition:.4s;border-radius:50%}
+.switch-dm input:checked + .sl-dm{background:#1e293b}
+.switch-dm input:checked + .sl-dm:before{content:"🌙";background:#475569;transform:translateX(28px)}
+/* Neon Toggle */
+.switch-neon{position:relative;display:inline-block;width:56px;height:28px}
+.switch-neon input{opacity:0;width:0;height:0}
+.sl-neon{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#0f172a;border:1px solid #334155;transition:.3s;border-radius:28px}
+.sl-neon:before{position:absolute;content:"";height:18px;width:18px;left:4px;bottom:4px;background:#334155;transition:.3s;border-radius:50%}
+.switch-neon input:checked + .sl-neon{border-color:#00d4ff;box-shadow:0 0 12px rgba(0,212,255,0.5)}
+.switch-neon input:checked + .sl-neon:before{transform:translateX(28px);background:#00d4ff;box-shadow:0 0 10px rgba(0,212,255,0.8)}
+/* Gradient Toggle */
+.switch-grad{position:relative;display:inline-block;width:56px;height:28px}
+.switch-grad input{opacity:0;width:0;height:0}
+.sl-grad{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#334155;transition:.3s;border-radius:28px}
+.sl-grad:before{position:absolute;content:"";height:20px;width:20px;left:4px;bottom:4px;background:#fff;transition:.3s;border-radius:50%}
+.switch-grad input:checked + .sl-grad{background:linear-gradient(90deg,#6366f1,#ff0055)}
+.switch-grad input:checked + .sl-grad:before{transform:translateX(28px)}
+
 footer{border-top:1px solid var(--border);padding:44px;background:rgba(8,9,14,0.96);text-align:center;color:var(--muted);font-size:13px}
 footer strong{color:#a5b4fc}
 
@@ -317,7 +365,7 @@ footer strong{color:#a5b4fc}
 <section id="shapes">
   <div class="cat-label">
     <h2>Shape & Form Variants</h2>
-    <span>ChatGPT + Extra</span>
+    <span>All Variants</span>
     <div class="cat-divider"></div>
   </div>
   <div class="grid">
@@ -341,11 +389,16 @@ footer strong{color:#a5b4fc}
 <section id="states">
   <div class="cat-label">
     <h2>State & Feedback Buttons</h2>
-    <span>Interactive States</span>
+    <span>Interactive</span>
     <div class="cat-divider"></div>
   </div>
   <div class="grid">
-    <div class="card"><span class="card-num">22. Toggle Button</span><div class="card-wrap"><button class="b-toggle">ON &nbsp;●</button></div><p class="card-desc">On/off persistent state control</p></div>
+    <div class="card"><span class="card-num">22. Standard Switch</span><div class="card-wrap"><div class="sw-wrap"><label class="switch-std"><input type="checkbox"><span class="sl-std"></span></label><span class="sw-label-txt">Standard</span></div></div><p class="card-desc">Classic flat slider toggle switch</p></div>
+    <div class="card"><span class="card-num">22b. iOS Style Switch</span><div class="card-wrap"><div class="sw-wrap"><label class="switch-ios2"><input type="checkbox" checked><span class="sl-ios"></span></label><span class="sw-label-txt">iOS Style</span></div></div><p class="card-desc">Smooth cubic-bezier spring physics</p></div>
+    <div class="card"><span class="card-num">22c. ON/OFF Text Toggle</span><div class="card-wrap"><div class="sw-wrap"><label class="switch-txt2"><input type="checkbox"><span class="sl-txt"></span></label><span class="sw-label-txt">Text Label</span></div></div><p class="card-desc">Inline OFF→ON text inside pill knob</p></div>
+    <div class="card"><span class="card-num">22d. Day/Night Toggle</span><div class="card-wrap"><div class="sw-wrap"><label class="switch-dm"><input type="checkbox"><span class="sl-dm"></span></label><span class="sw-label-txt">Dark Mode</span></div></div><p class="card-desc">☀️ → 🌙 animated theme switcher</p></div>
+    <div class="card"><span class="card-num">22e. Neon Glow Toggle</span><div class="card-wrap"><div class="sw-wrap"><label class="switch-neon"><input type="checkbox"><span class="sl-neon"></span></label><span class="sw-label-txt">Neon</span></div></div><p class="card-desc">Cyan neon glow box-shadow on active</p></div>
+    <div class="card"><span class="card-num">22f. Gradient Toggle</span><div class="card-wrap"><div class="sw-wrap"><label class="switch-grad"><input type="checkbox"><span class="sl-grad"></span></label><span class="sw-label-txt">Gradient</span></div></div><p class="card-desc">Indigo → Pink gradient fill on active</p></div>
     <div class="card"><span class="card-num">23. Loading Button</span><div class="card-wrap"><button class="b-loading">Loading...</button></div><p class="card-desc">Spinner processing state with CSS animation</p></div>
     <div class="card"><span class="card-num">24. Success Button</span><div class="card-wrap"><button class="b-success">✓ &nbsp;Success</button></div><p class="card-desc">Positive completion state</p></div>
     <div class="card"><span class="card-num">25. Error Button</span><div class="card-wrap"><button class="b-error">✕ &nbsp;Delete</button></div><p class="card-desc">Destructive / danger state</p></div>
@@ -378,7 +431,7 @@ footer strong{color:#a5b4fc}
 <section id="effects">
   <div class="cat-label">
     <h2>Visual Effect & Style Buttons</h2>
-    <span>AI + Dev + Special</span>
+    <span>Special Styles</span>
     <div class="cat-divider"></div>
   </div>
   <div class="grid">
@@ -398,7 +451,7 @@ footer strong{color:#a5b4fc}
 <!-- ====== CATEGORY 6: EXCLUSIVE ADDITIONS (My New) ====== -->
 <section id="extras">
   <div class="cat-label">
-    <h2>Exclusive Antigravity Additions</h2>
+    <h2>Exclusive Signature Additions</h2>
     <span>🔥 New Originals</span>
     <div class="cat-divider"></div>
   </div>

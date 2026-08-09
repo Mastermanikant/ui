@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Types of Toggle Buttons</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --primary-color: #4cd964;
+            --dark-bg: #1e1e1e;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 140px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #555;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* --- 1. Standard Slider Switch --- */
+        .switch-standard {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch-standard input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider-standard {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #ccc;
+            transition: .3s;
+            border-radius: 34px;
+        }
+
+        .slider-standard:before {
+            position: absolute;
+            content: "";
+            height: 26px; width: 26px;
+            left: 4px; bottom: 4px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider-standard {
+            background-color: #2196F3;
+        }
+
+        input:checked + .slider-standard:before {
+            transform: translateX(26px);
+        }
+
+        /* --- 2. iOS Style Switch --- */
+        .switch-ios {
+            position: relative;
+            display: inline-block;
+            width: 56px;
+            height: 30px;
+        }
+
+        .switch-ios input {
+            opacity: 0; width: 0; height: 0;
+        }
+
+        .slider-ios {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #e9e9ea;
+            transition: .4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 30px;
+        }
+
+        .slider-ios:before {
+            position: absolute;
+            content: "";
+            height: 26px; width: 26px;
+            left: 2px; bottom: 2px;
+            background-color: white;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            transition: .4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 50%;
+        }
+
+        input:checked + .slider-ios {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .slider-ios:before {
+            transform: translateX(26px);
+        }
+
+        /* --- 3. Text Label Toggle (ON/OFF inside) --- */
+        .switch-text {
+            position: relative;
+            display: inline-block;
+            width: 75px;
+            height: 34px;
+        }
+
+        .switch-text input {
+            opacity: 0; width: 0; height: 0;
+        }
+
+        .slider-text {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #e74c3c;
+            transition: .3s;
+            border-radius: 34px;
+        }
+
+        .slider-text:before {
+            position: absolute;
+            content: "OFF";
+            color: #e74c3c;
+            font-size: 10px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 26px;
+            height: 26px; width: 32px;
+            left: 4px; bottom: 4px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 20px;
+        }
+
+        input:checked + .slider-text {
+            background-color: #2ecc71;
+        }
+
+        input:checked + .slider-text:before {
+            content: "ON";
+            color: #2ecc71;
+            transform: translateX(35px);
+        }
+
+        /* --- 4. Segmented Control Toggle --- */
+        .segmented-toggle {
+            display: flex;
+            background: #eee;
+            padding: 4px;
+            border-radius: 8px;
+        }
+
+        .segmented-toggle input {
+            display: none;
+        }
+
+        .segmented-toggle label {
+            padding: 8px 20px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: 0.2s;
+            color: #666;
+        }
+
+        .segmented-toggle input:checked + label {
+            background: #fff;
+            color: #000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* --- 5. Neumorphic Switch --- */
+        .switch-neu {
+            position: relative;
+            display: inline-block;
+            width: 70px;
+            height: 38px;
+        }
+
+        .switch-neu input {
+            opacity: 0; width: 0; height: 0;
+        }
+
+        .slider-neu {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #f0f0f0;
+            border-radius: 38px;
+            box-shadow: inset 3px 3px 7px #d1d1d1, inset -3px -3px 7px #ffffff;
+            transition: 0.3s;
+        }
+
+        .slider-neu:before {
+            position: absolute;
+            content: "";
+            height: 30px; width: 30px;
+            left: 4px; bottom: 4px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            box-shadow: 3px 3px 5px #b8b8b8, -3px -3px 5px #ffffff;
+            transition: 0.3s;
+        }
+
+        input:checked + .slider-neu {
+            background-color: #a3b1ff;
+        }
+
+        input:checked + .slider-neu:before {
+            transform: translateX(32px);
+            background-color: #6c5ce7;
+            box-shadow: inset 2px 2px 3px #5344c7, 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* --- 6. Animated Day/Night Dark Mode Toggle --- */
+        .switch-theme {
+            position: relative;
+            display: inline-block;
+            width: 65px;
+            height: 34px;
+        }
+
+        .switch-theme input {
+            opacity: 0; width: 0; height: 0;
+        }
+
+        .slider-theme {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #87CEEB;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider-theme:before {
+            position: absolute;
+            content: "☀️";
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 26px; width: 26px;
+            left: 4px; bottom: 4px;
+            background-color: #FFD700;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider-theme {
+            background-color: #2c3e50;
+        }
+
+        input:checked + .slider-theme:before {
+            content: "🌙";
+            background-color: #f1c40f;
+            transform: translateX(31px);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Interactive Toggle Buttons UI Gallery</h1>
+
+    <div class="container">
+
+        <!-- 1. Standard Slider Switch -->
+        <div class="card">
+            <div class="card-title">1. Standard Flat Switch</div>
+            <label class="switch-standard">
+                <input type="checkbox">
+                <span class="slider-standard"></span>
+            </label>
+        </div>
+
+        <!-- 2. iOS Style Switch -->
+        <div class="card">
+            <div class="card-title">2. iOS Style Switch</div>
+            <label class="switch-ios">
+                <input type="checkbox" checked>
+                <span class="slider-ios"></span>
+            </label>
+        </div>
+
+        <!-- 3. Text Label Toggle -->
+        <div class="card">
+            <div class="card-title">3. Inline Text Toggle</div>
+            <label class="switch-text">
+                <input type="checkbox">
+                <span class="slider-text"></span>
+            </label>
+        </div>
+
+        <!-- 4. Segmented Control Toggle -->
+        <div class="card">
+            <div class="card-title">4. Segmented / Tab Toggle</div>
+            <div class="segmented-toggle">
+                <input type="radio" id="opt1" name="seg-toggle" checked>
+                <label for="opt1">On</label>
+                <input type="radio" id="opt2" name="seg-toggle">
+                <label for="opt2">Off</label>
+            </div>
+        </div>
+
+        <!-- 5. Neumorphic Switch -->
+        <div class="card">
+            <div class="card-title">5. Neumorphic Soft Switch</div>
+            <label class="switch-neu">
+                <input type="checkbox">
+                <span class="slider-neu"></span>
+            </label>
+        </div>
+
+        <!-- 6. Animated Day/Night Dark Mode Toggle -->
+        <div class="card">
+            <div class="card-title">6. Day/Night Theme Toggle</div>
+            <label class="switch-theme">
+        <!-- 6. Animated Day/Night Dark Mode Toggle -->
+        <div class="card">
+            <div class="card-title">6. Day/Night Theme Toggle</div>
+            <label class="switch-theme">
+                <input type="checkbox">
+                <span class="slider-theme"></span>
+            </label>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
