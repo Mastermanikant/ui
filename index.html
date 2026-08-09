@@ -1,18 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frontend Canvas Studio — Visual UI Designer & Component Library</title>
-    <meta name="description" content="The Canva for Frontend. Visually assemble 50+ UI components, style them with live controls, and get developer-ready AI prompts instantly." />
-    <meta name="theme-color" content="#00f2fe" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FrankBase UI — Ultimate Homepage Design Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #07080c;
+    --card-bg: rgba(18, 20, 28, 0.75);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --primary: #6366f1;
+    --primary-glow: rgba(99, 102, 241, 0.35);
+    --accent-cyan: #00d4ff;
+    --accent-pink: #ff0055;
+    --accent-amber: #f59e0b;
+    --accent-emerald: #10b981;
+    --text-white: #ffffff;
+    --text-muted: #94a3b8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Ambient Glow Orbs */
+  .glow-orb-1 {
+    position: absolute; top: -100px; left: 20%; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, transparent 70%);
+    filter: blur(90px); pointer-events: none; z-index: 0;
+  }
+  .glow-orb-2 {
+    position: absolute; top: 400px; right: 10%; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255, 0, 85, 0.16) 0%, transparent 70%);
+    filter: blur(100px); pointer-events: none; z-index: 0;
+  }
+
+  /* 1. Header & Unified Brand Logo */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    height: 72px; padding: 0 48px;
+    background: rgba(13, 15, 23, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .brand-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none; cursor: pointer;
+  }
+  .brand-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: linear-gradient(135deg, #6366f1, #ff0055);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
+  }
+  .brand-name {
+    font-size: 20px; font-weight: 900; color: #ffffff;
+    display: flex; align-items: center; gap: 6px; letter-spacing: -0.02em;
+  }
+  .brand-badge {
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    color: #ffffff; font-size: 11px; font-weight: 800;
+    padding: 3px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+
+  nav { display: flex; gap: 28px; font-size: 14px; font-weight: 600; }
+  nav a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  nav a:hover, nav a.active { color: #ffffff; }
+
+  .header-actions { display: flex; align-items: center; gap: 16px; }
+  .search-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px; border-radius: 99px;
+    font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 8px; cursor: pointer;
+  }
+  .btn-primary-sm {
+    background: linear-gradient(90deg, var(--primary), #8b5cf6);
+    color: #fff; padding: 10px 20px; border-radius: 10px;
+    font-size: 13px; font-weight: 700; text-decoration: none;
+    box-shadow: 0 4px 14px var(--primary-glow); transition: transform 0.2s;
+  }
+  .btn-primary-sm:hover { transform: translateY(-2px); }
+
+  /* 2. Hero Section */
+  .hero {
+    position: relative; z-index: 1;
+    padding: 80px 24px 48px; text-align: center; max-width: 1050px; margin: 0 auto;
+  }
+  .badge-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3);
+    color: #a5b4fc; padding: 6px 18px; border-radius: 99px;
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: 58px; font-weight: 900; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 24px;
+  }
+  .gradient-text {
+    background: linear-gradient(90deg, #6366f1, #00d4ff, #ff0055);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero p {
+    font-size: 18px; color: var(--text-muted); max-width: 720px; margin: 0 auto 40px; font-weight: 500;
+  }
+  .hero-buttons { display: flex; justify-content: center; gap: 16px; margin-bottom: 54px; }
+  .btn-hero-primary {
+    background: linear-gradient(90deg, var(--primary), var(--accent-pink));
+    color: #fff; padding: 16px 36px; border-radius: 14px;
+    font-size: 16px; font-weight: 800; text-decoration: none;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4); transition: all 0.25s;
+  }
+  .btn-hero-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 40px rgba(99, 102, 241, 0.6); }
+  .btn-hero-secondary {
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-color);
+    color: #fff; padding: 16px 36px; border-radius: 14px;
+    font-size: 16px; font-weight: 700; text-decoration: none; transition: background 0.2s;
+  }
+
+  /* Stats Ribbon */
+  .stats-ribbon {
+    display: flex; justify-content: center; gap: 48px;
+    padding: 24px 36px; background: rgba(18, 20, 28, 0.6);
+    border: 1px solid var(--border-color); border-radius: 20px;
+    max-width: 900px; margin: 0 auto 80px; backdrop-filter: blur(12px);
+  }
+  .stat-item h3 { font-size: 32px; font-weight: 900; color: #fff; }
+  .stat-item p { font-size: 12px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+
+  /* 3. Section Titles */
+  .section-title { text-align: center; margin-bottom: 48px; }
+  .section-title h2 { font-size: 36px; font-weight: 900; letter-spacing: -0.02em; }
+  .section-title p { color: var(--text-muted); font-size: 15px; margin-top: 8px; }
+
+  /* 4. Expanded 8 Archetype Cards Grid */
+  .grid-container {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px; max-width: 1240px; margin: 0 auto 96px; padding: 0 24px;
+  }
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border-color);
+    border-radius: 20px; padding: 28px 24px; text-align: center;
+    position: relative; overflow: hidden; transition: all 0.3s;
+    display: flex; flex-direction: column; align-items: center; justify-content: space-between; min-height: 250px;
+  }
+  .card:hover {
+    border-color: rgba(99, 102, 241, 0.5);
+    transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  }
+  .card-tag { font-size: 11px; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
+
+  /* Sample Interactive Buttons */
+  .demo-btn-1 {
+    padding: 12px 24px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px);
+    color: #fff; font-weight: 700; cursor: pointer; transition: 0.25s;
+  }
+  .demo-btn-2 {
+    padding: 12px 24px; border-radius: 99px; border: none;
+    background: linear-gradient(90deg, #ff0055, #6366f1);
+    color: #fff; font-weight: 800; cursor: pointer;
+    box-shadow: 0 0 22px rgba(255, 0, 85, 0.6); animation: pulseGlow 2s infinite;
+  }
+  @keyframes pulseGlow { 50% { box-shadow: 0 0 35px rgba(255, 0, 85, 0.9); } }
+
+  .demo-btn-3 {
+    padding: 12px 24px; border-radius: 12px; border: 2px solid #00d4ff;
+    background: #0f172a; color: #00d4ff; font-weight: 800; cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+  }
+  .demo-btn-4 {
+    padding: 12px 24px; border-radius: 12px; border: none;
+    background: #6366f1; color: #fff; font-weight: 800; cursor: pointer;
+    box-shadow: 0 6px 0 #4338ca; transition: 0.1s;
+  }
+  .demo-btn-4:active { transform: translateY(4px); box-shadow: 0 2px 0 #4338ca; }
+
+  .demo-btn-5 {
+    padding: 12px 24px; border-radius: 16px; border: none;
+    background: #1e293b; color: #a5b4fc; font-weight: 800; cursor: pointer;
+    box-shadow: -4px -4px 10px rgba(255,255,255,0.05), 4px 4px 10px rgba(0,0,0,0.5);
+  }
+  .demo-btn-6 {
+    padding: 12px 24px; border-radius: 12px; border: none;
+    background: linear-gradient(90deg, #10b981, #00d4ff, #6366f1); background-size: 300% 100%;
+    color: #fff; font-weight: 800; cursor: pointer; animation: gradMove 3s linear infinite;
+  }
+  @keyframes gradMove { to { background-position: 300% 0; } }
+
+  .demo-btn-7 {
+    padding: 12px 24px; border: 1px solid #f59e0b; background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b; font-weight: 800; cursor: pointer;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+  .demo-btn-8 {
+    padding: 12px 24px; border-radius: 12px; border: 1px solid #ff0055;
+    background: #0f172a; color: #ff0055; font-weight: 800; cursor: pointer;
+    box-shadow: inset 0 0 12px rgba(255, 0, 85, 0.3);
+  }
+
+  /* 5. 50+ Keyframe Motion Showcase */
+  .motion-section {
+    max-width: 1200px; margin: 0 auto 96px; padding: 36px;
+    background: rgba(18, 20, 28, 0.6); border: 1px solid var(--border-color);
+    border-radius: 24px; text-align: center; backdrop-filter: blur(12px);
+  }
+  .motion-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 24px; }
+  .badge-motion {
+    padding: 8px 16px; border-radius: 10px; background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color); font-size: 13px; font-weight: 700; color: #a5b4fc;
+    cursor: pointer; transition: 0.2s;
+  }
+  .badge-motion:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+  /* 6. Footer */
+  footer {
+    border-top: 1px solid var(--border-color); padding: 48px;
+    background: rgba(10, 11, 16, 0.95); text-align: center; color: var(--text-muted); font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="glow-orb-1"></div>
+  <div class="glow-orb-2"></div>
+
+  <!-- 1. Header with Unified Brand Logo -->
+  <header>
+    <a href="#" class="brand-logo">
+      <div class="brand-icon">⚡</div>
+      <div class="brand-name">
+        FrankBase <span class="brand-badge">UI</span>
+      </div>
+    </a>
+
+    <nav>
+      <a href="#" class="active">Home</a>
+      <a href="#archetypes">8 Core Archetypes</a>
+      <a href="#motions">50+ Keyframes</a>
+      <a href="#docs">Docs & SEO</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="search-pill">
+        <span>🔍 Search 2,000+ Buttons...</span>
+        <kbd style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 10px;">⌘K</kbd>
+      </div>
+      <a href="#archetypes" class="btn-primary-sm">Open Studio</a>
+    </div>
+  </header>
+
+  <!-- 2. Hero Section -->
+  <section class="hero">
+    <div class="badge-tag">✨ Complete Exhaustive Component Engine</div>
+    <h1>
+      The World's Most Powerful <br>
+      <span class="gradient-text">UI Component & Motion Library</span>
+    </h1>
+    <p>
+      Explore 30+ Categories, 2,000+ Structural Button Archetypes, 50+ Keyframe Animations, and a 60 FPS No-Code Live Studio. Copy pure production HTML & CSS in 1 click.
+    </p>
+    <div class="hero-buttons">
+      <a href="#archetypes" class="btn-hero-primary">🚀 Explore 8 Core Archetypes</a>
+      <a href="#motions" class="btn-hero-secondary">🎬 Test 50+ Keyframe Motions</a>
+    </div>
+
+    <!-- Live Stats Ribbon -->
+    <div class="stats-ribbon">
+      <div class="stat-item">
+        <h3>30+</h3>
+        <p>Categories</p>
+      </div>
+      <div class="stat-item">
+        <h3>2,000+</h3>
+        <p>Unique Buttons</p>
+      </div>
+      <div class="stat-item">
+        <h3>50+</h3>
+        <p>Keyframe Animations</p>
+      </div>
+      <div class="stat-item">
+        <h3>60 FPS</h3>
+        <p>Live Studio</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Expanded 8 Structural Archetype Cards Grid -->
+  <section id="archetypes">
+    <div class="section-title">
+      <h2>Explore 8 Core Structural Archetypes</h2>
+      <p>Every card represents a distinct structural & motion mechanism</p>
+    </div>
+
+    <div class="grid-container">
+      
+      <!-- Card 1 -->
+      <div class="card">
+        <span class="card-tag">01. Frosted Glass</span>
+        <div style="margin: 28px 0;">
+          <button class="demo-btn-1">Glassmorphism</button>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted);">Backdrop-blur 16px & transparent glass refraction.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <span class="card-tag">02. Cyberpunk Neon</span>
+        <div style="margin: 28px 0;">
+          <button class="demo-btn-2">Cyber Pulse</button>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted);">Multi-color neon glow aura & pulsing box-shadow.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <span class="card-tag">03. Rotating Border</span>
+        <div style="margin: 28px 0;">
+          <button class="demo-btn-3">Conic Orbit</button>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted);">360° rotating conic gradient beam around border edge.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card">
+        <span class="card-tag">04. 3D Tactical Push</span>
+        <div style="margin: 28px 0;">
+          <button class="demo-btn-4">3D Push Down</button>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted);">Physical extruded thickness & active press translation.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card">
+        <span class="card-tag">05. Neumorphic Soft</span>
+        <div style="margin: 28px 0;">
+          <button class="demo-btn-5">Soft Embossed</button>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted);">Dual inset/outset soft shadow depth for tactile feel.</p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="card">
+        <span class="card-tag">06. Multi Gradient</span>
+        <div style="margin: 28px 0;">
+          <button class="demo-btn-6">Flowing Colors</button>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted);">300% moving multi-color linear gradient loop.</p>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="card">
+        <span class="card-tag">07. Sci-Fi Polygon</span>
+        <div style="margin: 28px 0;">
+          <button class="demo-btn-7">Cut Corner</button>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted);">45° polygon clipped corner architectural outline.</p>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="card">
+        <span class="card-tag">08. Synthwave Glow</span>
+        <div style="margin: 28px 0;">
+          <button class="demo-btn-8">Retro Neon</button>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted);">80s synthwave neon grid & inset shimmer light.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. 50+ Keyframes Motion Showcase Section -->
+  <section id="motions">
+    <div class="motion-section">
+      <div class="section-title" style="margin-bottom: 16px;">
+        <h2>50+ Keyframe Animations Library</h2>
+        <p>Combine any Motion, Color, Text, and Border Keyframes in 1 Click</p>
+      </div>
+
+      <div class="motion-badges">
+        <span class="badge-motion">🎬 Pulse (breathe)</span>
+        <span class="badge-motion">🎬 Bounce (vertical)</span>
+        <span class="badge-motion">🎬 Shake (horizontal)</span>
+        <span class="badge-motion">🎬 Float (smooth)</span>
+        <span class="badge-motion">🎬 Heartbeat</span>
+        <span class="badge-motion">🎬 Swing 3D</span>
+        <span class="badge-motion">🎬 Jello Skew</span>
+        <span class="badge-motion">🌈 Rainbow Hue</span>
+        <span class="badge-motion">🌈 Moving Gradient</span>
+        <span class="badge-motion">🔤 Text Shimmer</span>
+        <span class="badge-motion">🔤 Text Glitch RGB</span>
+        <span class="badge-motion">💫 360° Conic Spin</span>
+        <span class="badge-motion">🌠 Border Light Sweep</span>
+        <span class="badge-motion">⚡ Cyber Neon Glow</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Footer -->
+  <footer>
+    <p>© 2026 FrankBase UI — Primary Root Design Prototype. Direct Main Page Preview!</p>
+  </footer>
+
+</body>
 </html>
