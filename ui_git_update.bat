@@ -6,6 +6,7 @@ echo ================================================================
 echo    FRANKBASE UI - AUTO LOCAL GIT VERSION CONTROL TRACKER
 echo ================================================================
 echo Working Directory: d:\Best_ui
+echo Target Project: d:\Best_ui\New Website\FrankBase_UI
 echo Remote GitHub: https://github.com/Mastermanikant/ui.git
 echo Checking for local file changes every 30 seconds...
 echo Press Ctrl+C anytime to stop.
